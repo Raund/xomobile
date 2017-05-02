@@ -5,16 +5,13 @@
     <div class="header">
         <div class="container">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-8">
                     <div class="phone">{{ $texts->get('telephone') }}</div>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <div class="lang text-right">
                         <a class="active-lang" href="#"><img src="{{ asset('/img/frontend/en.png') }}"></a>
                         <ul class="langs">
-{{--
-                            <li> <a href="{{str_replace(url(App::getLocale()), url('ua'), Request::url())}}"><img src="{{ asset('/img/frontend/ua.png') }}" alt="ua"></a></li>
---}}
                             <li> <a href="{{str_replace(url(App::getLocale()), url('ru'), Request::url())}}"><img src="{{ asset('/img/frontend/ru.png') }}" alt="ru"></a></li>
                             <li> <a href="{{str_replace(url(App::getLocale()), url('en'), Request::url())}}"><img src="{{ asset('/img/frontend/en.png') }}" alt="usa"></a></li>
                         </ul>
@@ -28,7 +25,7 @@
             <div class="bar bar--sm hidden">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-3 col-sm-2">
+                        <div class="col-xs-2 col-xs-3 col-sm-2">
                             <a href="/{{ App::getLocale() }}"> <img class="logo logo-dark" alt="logo" src="{{ asset('/img/frontend/logo.png') }}"> <img class="logo logo-light" alt="logo" src="{{ asset('/img/frontend/logo-light.png') }}"> </a>
                         </div>
                         <div class="col-xs-9 col-sm-10 text-right">
@@ -40,7 +37,7 @@
             <nav id="menu1" class="bar bar-1 r-bar">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-1 col-sm-2">
+                        <div class="col-xs-2 col-md-1 col-sm-2">
                             <div class="bar__module">
                                 <a href="/{{ App::getLocale() }}"> <img class="logo logo-dark" alt="logo" src="{{ asset('/img/frontend/logo.png') }}"> <img class="logo logo-light" alt="logo" src="{{ asset('/img/frontend/logo-light.png') }}"> </a>
                             </div>
@@ -72,16 +69,9 @@
 @section('content')
     @if( count($download) !== 0 AND $categories_data['download']->active == 1)
         <section id="download" class="r-section cover switchable text-center-xs bg--secondary imagebg download-section">
-            <div class="background-image-holder r-background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/home_gradient.png') }}"> </div>
+            <div class="background-image-holder r-background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/nav_bg.png') }}"> </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6 col-md-5 mt--3">
-                        <h1 class="slide-title">{{ $download->getTranslate('title') }}</h1>
-                        <div class="lead r-lead">{!! $download->getTranslate('short_description') ? $download->getTranslate('short_description') : '' !!}</div>
-                        @foreach($images as $image_download)
-                            <a href="{{ $image_download->getAttributeTranslate('Cсылка на скачивание') ? $image_download->getAttributeTranslate('Cсылка на скачивание') : '#' }}" class="download-link"><img src="{{ $image_download->getAttributeTranslate('Картинка кнопки') }}"></a>
-                        @endforeach
-                    </div>
                     <div class="col-sm-6">
                         @if($download->getAttributeTranslate('Картинка'))
                             <img alt="Image download" src="{{ $download->getAttributeTranslate('Картинка') }}">
@@ -89,11 +79,25 @@
                             <img alt="Image download" src="{{ asset('/img/frontend/my_bg_img2.png') }}">
                         @endif
                     </div>
+                    <div class="col-sm-6 col-md-6 mt--3">
+                        <div class="download-wrap">
+    {{--
+                            <h1 class="download-title">{{ $download->getTranslate('title') }}</h1>
+    --}}
+                            <img src="{{ asset('/img/frontend/xomobile_logo.png') }}" alt="" class="download-logo">
+                            <div class="lead r-lead download-lead">{!! $download->getTranslate('short_description') ? $download->getTranslate('short_description') : '' !!}</div>
+                            <div class="download-link-wrap">
+                                @foreach($images as $image_download)
+                                    <a href="{{ $image_download->getAttributeTranslate('Cсылка на скачивание') ? $image_download->getAttributeTranslate('Cсылка на скачивание') : '#' }}" class="download-link"><img src="{{ $image_download->getAttributeTranslate('Картинка кнопки') }}"></a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     @endif
-    <section class="text-center bg--secondary find-section">
+    <section id="prices" class="text-center bg--secondary find-section">
         <div class="container">
             <div class="row">
                 <h2 class="tariff-title">{{ trans('base.find_name') }}</h2>
@@ -115,64 +119,43 @@
             </div>
         </div>
     </section>
-    <section id="about-us">
-        @if($categories_data['benefits']->active == 1)
-            <div class="container" >
-                <div class="row">
-                    <h2 class="section-name text-center">{{ trans('base.our_benefits') }}</h2>
-                    @foreach($benefits as $benefit)
-                        <div class="col-sm-6">
-                            <div class="feature feature-5 boxed boxed--lg boxed--border">
-                                @if($benefit->getAttributeTranslate('Картинка'))
-                                    <div class="col-md-3">
-                                        <div class="r-feature-img" style="background-image: url('{{ asset( $benefit->getAttributeTranslate('Картинка')) }}')"></div>
-                                    </div>
-                                    <div class="col-md-9">
-                                @else
-                                    <div class="col-md-12">
-                                @endif
-                                    <div class="feature__body">
-                                        <h4>{{ $benefit->getTranslate('title') }}</h4>
-                                        {!! $benefit->getTranslate('short_description') ? $benefit->getTranslate('short_description') : ''!!}  </div>
-                                </div>
-                                @if($benefit->getAttributeTranslate('Флажок') == 1)
-                                    <div class="free-block">{{ $benefit->getAttributeTranslate('Текст во флажке') ? $benefit->getAttributeTranslate('Текст во флажке') : 'Free' }}</div>
-                                @endif
+    @if($categories_data['about']->active == 1)
+        <section id="about-us" class="cover unpad--bottom switchable text-center-xs bg--secondary imagebg about-us">
+            <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/about_us_bg.png') }}"> </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="about-us-title">{{ $about->getTranslate('title') }}</h1>
+                            <div class="lead about-us-lead">
+                                {!!  $about->getTranslate('description') ? $about->getTranslate('description') : ''!!}
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div>
-        @endif
-    </section>
+        </section>
+    @endif
+
     <section class="cover unpad--bottom switchable text-center-xs bg--secondary imagebg">
-        <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/home_gradient.png') }}"> </div>
+        <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/slider_bg.png') }}"> </div>
         @if($categories_data['slider']->active == 1)
 
             <div class="container">
-                @foreach($slider as $slide)
-                    <div class="slide-popup" data-popup-id="{{$slide->id}}">{!! $slide->getAttributeTranslate('Текст в popup')!!}</div>
-                @endforeach
-                <div class="owl-carousel">
-                    @foreach($slider as $slide)
-                        <div class="row">
-                            <div class="col-sm-6 col-md-5 mt--3">
-                                <h1 class="slide-title">{{ $slide->getTranslate('title') }}</h1>
-                                <div class="lead r-lead">
-                                    {!!  $slide->getTranslate('short_description') ? $slide->getTranslate('short_description') : ''!!}
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="slider-title">{{ $categories_data['slider']->getTranslate('title') }}</h1>
+                    </div>
+                    <div class="owl-carousel">
+
+                        @foreach($slider as $slide)
+                            <div class="slide-img-bg" style="background-image: url('{{ asset( $slide->getAttributeTranslate('Картинка')) }}');">
+                                <div class="slide-text">
+                                    <h2 class="slide-title">{{ $slide->getTranslate('title') }}</h2>
+                                    <div class="lead r-lead">{!!  $slide->getTranslate('short_description') ? $slide->getTranslate('short_description') : ''!!}</div>
                                 </div>
-                                <button type="submit" data-slide-id="{{$slide->id}}" class="btn btn--primary r-white-btn show-popup-slide">
-                                    {{$slide->getAttributeTranslate('Название кнопки') ? $slide->getAttributeTranslate('Название кнопки') : 'Click' }}
-                                    {{--{{ $slide->getAttributeTranslate('Название кнопки') }}--}}
-                                </button>
                             </div>
-                            @if($slide->getAttributeTranslate('Картинка'))
-                                <div class="col-sm-6"> <img alt="Image" src="{{ asset( $slide->getAttributeTranslate('Картинка')) }}"> </div>
-                            @else
-                                <div class="col-sm-6"> <img alt="Image" src="{{ asset('/img/frontend/home_img_top.png') }}"> </div>
-                            @endif
-                        </div>
-                    @endforeach
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
         @endif
@@ -193,7 +176,7 @@
         </section>
     @endif
     @if($categories_data['price']->active == 1)
-        <section id="prices" class="r-switchable">
+        <section class="r-switchable">
             <div class="container">
                 <div class="row">
                     <h2 class="section-name text-center">{{ trans('base.our_priced') }}</h2>
@@ -220,6 +203,37 @@
             </div>
         </section>
     @endif
+    <section id="benefits">
+        @if($categories_data['benefits']->active == 1)
+            <div class="container" >
+                <div class="row">
+                    <h2 class="section-name text-center">{{ trans('base.our_benefits') }}</h2>
+                    @foreach($benefits as $benefit)
+                        <div class="col-sm-6 col-md-3">
+                            <div class="feature feature-5 boxed boxed--lg boxed--border boxed-r">
+                                @if($benefit->getAttributeTranslate('Картинка'))
+                                    <div class="col-md-12">
+                                        <div class="r-feature-img" style="background-image: url('{{ asset( $benefit->getAttributeTranslate('Картинка')) }}')"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        @else
+                                            <div class="col-md-12">
+                                                @endif
+                                                <div class="feature__body">
+                                                    <h4>{{ $benefit->getTranslate('title') }}</h4>
+                                                    {!! $benefit->getTranslate('short_description') ? $benefit->getTranslate('short_description') : ''!!}  </div>
+                                            </div>
+                                            @if($benefit->getAttributeTranslate('Флажок') == 1)
+                                                <div class="free-block">{{ $benefit->getAttributeTranslate('Текст во флажке') ? $benefit->getAttributeTranslate('Текст во флажке') : 'Free' }}</div>
+                                            @endif
+                                    </div>
+                            </div>
+                            @endforeach
+                        </div>
+                </div>
+        @endif
+    </section>
+
     @if(count($contact) !== 0 AND $categories_data['contact']->active == 1)
         <section id="contacts" class="switchable r-switchable bg--secondary">
             <div class="container">

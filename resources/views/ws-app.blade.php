@@ -68,8 +68,10 @@
 		<footer class="r-footer text-center-xs space--xs">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-12 text-center-xs">
-						<ul class="menu-horizontal r-footer-menu text-center">
+					<div class="col-sm-2">
+						<a href="/{{ App::getLocale() }}"><img class="logo r-logo" alt="logo" src="{{ asset('/img/frontend/logo_footer.png') }}"> </a>					</div>
+					<div class="col-xs-12 col-sm-5 col-md-4 text-center-xs">
+						<ul class="menu-horizontal r-footer-menu text-left-md">
 {{--
 							@if($categories_data['benefits']->active == 1)
 								<li> <a class="r-menu-link" data-scroll-id="about-us" href="/{{ App::getLocale() }}#about-us">{{ trans('base.about_us') }}</a> </li>
@@ -78,6 +80,18 @@
 							@if( $categories_data['faq']->active == 1)
 								<li> <a class="r-menu-link"  href="/{{ App::getLocale() }}/faq">FAQ</a> </li>
 							@endif
+							<li> <a class="r-menu-link" data-scroll-id="prices" href="/{{ App::getLocale() }}#prices">{{ trans('base.prices') }}</a> </li>
+							@if( count($download) !== 0 AND $categories_data['download']->active == 1)
+								<li> <a class="r-menu-link" data-scroll-id="download" href="/{{ App::getLocale() }}#download">{{ trans('base.download') }}</a> </li>
+							@endif
+							@if(count($contact) !== 0 AND $categories_data['contact']->active == 1)
+								<li> <a class="r-menu-link" data-scroll-id="contacts" href="/{{ App::getLocale() }}#contacts">{{ trans('base.contacts') }}</a> </li>
+							@endif
+
+						</ul>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-4">
+						<ul class="menu-horizontal r-footer-menu text-right-sm">
 							@if($categories_data['page']->active == 1)
 								@if(is_object($page) AND count($page) > 1)
 									@foreach($page as $page_item)
@@ -88,32 +102,17 @@
 								@endif
 							@endif
 
-							@if( count($download) !== 0 AND $categories_data['download']->active == 1)
-								<li> <a class="r-menu-link" data-scroll-id="download" href="/{{ App::getLocale() }}#download">{{ trans('base.download') }}</a> </li>
-							@endif
-							<li> <a class="r-menu-link" data-scroll-id="prices" href="/{{ App::getLocale() }}#prices">{{ trans('base.prices') }}</a> </li>
-{{--
-							@if(count($contact) !== 0 AND $categories_data['contact']->active == 1)
-								<li> <a class="r-menu-link" data-scroll-id="contacts" href="/{{ App::getLocale() }}#contacts">{{ trans('base.contacts') }}</a> </li>
-							@endif
---}}
-
-							{{--@if($categories_data['page']->active == 1)
-								<li> <a class="r-menu-link"  href="/{{ App::getLocale() }}/{{ $categories_data['page']->link }}/44">{{ trans('base.info') }}</a> </li>
-							@endif
-							@if($categories_data['page']->active == 1)
-								<li> <a class="r-menu-link"  href="/{{ App::getLocale() }}/{{ $categories_data['page']->link }}/46">Доставка</a> </li>
-							@endif--}}
-
 						</ul>
-{{--
-						<ul class="social-list list-inline list--hover text-center">
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-2">
+						<ul class="social-list list-inline list--hover text-right">
 							@foreach( $social as $social_item)
-								<li><a href="{{ $social_item->getAttributeTranslate('Ссылка на сеть') }}">{!! $social_item->getAttributeTranslate('Картинка соц. сети') !!}</a></li>
+								<li class="social-list-item"><a href="{{ $social_item->getAttributeTranslate('Ссылка на сеть') }}">{!! $social_item->getAttributeTranslate('Картинка соц. сети') !!}</a></li>
 							@endforeach
 						</ul>
---}}
-						<div class="copyright text-center">2017 buben.tel</div>
+					</div>
+					<div class="col-xs-12 col-sm-12">
+						<div class="copyright text-center">2017 xomobile.com</div>
 					</div>
 				</div>
 			</div>
