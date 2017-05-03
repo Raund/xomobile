@@ -202,7 +202,10 @@ footer .social-list{
     padding-top: 20px;
 }
 footer ul.social-list li.social-list-item{
-    margin-right: 10px;
+    margin-right: 8px;
+}
+footer ul.social-list li.social-list-item:last-child{
+    margin-right: 0;
 }
 .icon.icon--sm {
     font-size: 20px;
@@ -404,6 +407,9 @@ p strong{
     background-color: #fff;
 }
 /*************remake theme serpent***********/
+input[type]:focus, select:focus, textarea:focus{
+    border-color: #ff9d27;
+}
 .btn--primary, .btn--primary:visited {
     background: #ff9d27;
     border-color: #ff9d27;
@@ -446,7 +452,7 @@ footer:not(.bg--primary):not(.bg--dark) a{
 .menu-horizontal > li > span,
 .menu-horizontal > li > .modal-instance > .modal-trigger{
     color: #fff;
-    text-shadow: 0 0 3px #000;
+    text-shadow: 0 0 1px rgba(0,0,0,.5);
 }
 .menu-horizontal > li:not(:hover) > a,
 .menu-horizontal > li:not(:hover) > span,

@@ -68,9 +68,10 @@
 		<footer class="r-footer text-center-xs space--xs">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
-						<a href="/{{ App::getLocale() }}"><img class="logo r-logo" alt="logo" src="{{ asset('/img/frontend/logo_footer.png') }}"> </a>					</div>
-					<div class="col-xs-12 col-sm-5 col-md-4 text-center-xs">
+					<div class="col-sm-2 col-md-2 col-lg-2">
+						<a href="/{{ App::getLocale() }}"><img class="logo r-logo" alt="logo" src="{{ asset('/img/frontend/logo_footer.png') }}"> </a>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 text-center-xs">
 						<ul class="menu-horizontal r-footer-menu text-left-md">
 {{--
 							@if($categories_data['benefits']->active == 1)
@@ -90,8 +91,8 @@
 
 						</ul>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-md-4">
-						<ul class="menu-horizontal r-footer-menu text-right-sm">
+					<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+						<ul class="menu-horizontal r-footer-menu text-right">
 							@if($categories_data['page']->active == 1)
 								@if(is_object($page) AND count($page) > 1)
 									@foreach($page as $page_item)
@@ -104,7 +105,7 @@
 
 						</ul>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-2">
+					<div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
 						<ul class="social-list list-inline list--hover text-right">
 							@foreach( $social as $social_item)
 								<li class="social-list-item"><a href="{{ $social_item->getAttributeTranslate('Ссылка на сеть') }}">{!! $social_item->getAttributeTranslate('Картинка соц. сети') !!}</a></li>
