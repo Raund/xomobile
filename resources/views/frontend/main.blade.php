@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-xs-2 col-md-1 col-sm-2">
                             <div class="bar__module">
-                                <a href="/{{ App::getLocale() }}"> <img class="logo logo-dark" alt="logo" src="{{ asset('/img/frontend/logo.png') }}"> <img class="logo logo-light" alt="logo" src="{{ asset('/img/frontend/logo-light.png') }}"> </a>
+                                <a href="/{{ App::getLocale() }}"> <img class="logo logo-dark" alt="logo" src="{{ asset('/img/frontend/logo_footer.png') }}"> <img class="logo logo-light" alt="logo" src="{{ asset('/img/frontend/logo-light.png') }}"> </a>
                             </div>
                         </div>
                         <div class="col-md-11 col-sm-12 text-right text-left-xs text-left-sm">

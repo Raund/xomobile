@@ -192,7 +192,6 @@ footer .r-logo{
     font-weight: bold;
 }
 footer{
-    font-family: "Lato", sans-serif;
     color: #fff;
 }
 footer .list-inline:not(:last-child){
@@ -225,6 +224,7 @@ h2.tariff-title + form{
 }
 .r-background-image-holder{
     height: 95%;
+    background-position: 50% top !important;
 }
 .r-switchable{
     padding-top: 55px !important;
@@ -281,7 +281,7 @@ input[type=number]::-webkit-outer-spin-button {-webkit-appearance: none;
 .menu-fix{
     display: none;
     position: fixed;
-    background-color: rgba(255,197,39,.85);
+    background-color: rgba(255,146,57,.85);
     width: 100%;
     height: 70px;
     padding: 10px 0;
@@ -545,6 +545,9 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
     }
     footer ul.text-left-md{
         text-align: center;
+    }
+    .r-background-image-holder {
+        background-position: 70% 50px !important;
     }
 }
 @media only screen and (max-width: 480px) {
