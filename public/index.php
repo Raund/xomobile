@@ -36,7 +36,7 @@ exit;*/
 $app = require_once __DIR__.'/../data.xomobile.com/bootstrap/app.php';
 
 $app->bind('path.public', function() {
-	return base_path() . '/app.xomobile.com';
+	return base_path() . '/../app.xomobile.com';
 });
 
 /*
