@@ -1,5 +1,7 @@
 $(function() {
-    
+    if ( $(window).width() < 768){
+        $('#download .r-background-image-holder > img').attr("src","img/frontend/nav_bg_mobile.png");
+    }
 /******owl-corousel options******/
     $(".owl-carousel").owlCarousel({
         singleItem: true,
@@ -193,7 +195,7 @@ $(function() {
         currentPhoneQuery = data.code;
 
         var url = $( "input[name$='url']" ).val();
-       // console.log(data);
+        //console.log(data);
         $.ajax({
             url: url + '?rand=' + Math.random(),
             method: "POST",
@@ -225,7 +227,7 @@ $(function() {
                 if(data.status == 'success'){
                     //swal(trans['base.success'], "", "success");
                     if(data.rate && data.rate.rate ){
-                        console.info(data.rate);
+                        //console.info(data.rate);
                         $('#error').hide();
                         $('#tariff-not-found').hide();
                         $('#tariffing-operator').text(data.rate.destination);
