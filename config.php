@@ -2,5 +2,4 @@
 $db_host = 'localhost';
 $db_username = 'root';
 $db_password = '';
-$db_database = 'buben_db';
-
+$db_database = 'xomobile_db';
