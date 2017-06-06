@@ -86,6 +86,9 @@
 .r-lead{
     font-weight: 300;
 }
+.imagebg:not(.image--light) .page-content a{
+    color: #FF8D00;
+}
 button.btn.r-white-btn{
     width: initial;
     padding: 0 20px;
@@ -246,6 +249,10 @@ h2.tariff-title + form{
     -ms-transition: opacity 0.3s;
     -o-transition: opacity 0.3s;
     transition: opacity 0.3s;
+}
+.r-switchable .contact-lead a {
+    color: #FF8D00;
+    opacity: 1;
 }
 .r-switchable a:hover{
     opacity: 1;
