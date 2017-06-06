@@ -100,7 +100,7 @@
     <section id="prices" class="text-center bg--secondary find-section">
         <div class="container">
             <div class="row">
-                <h2 class="tariff-title">{{ trans('base.find_name') }}</h2>
+                <h4 class="tariff-title text-center">{{ trans('base.find_name') }}</h4>
                 <form action="" id="tariffing" method="post">
                     <div class="col-md-12">
                         <div id="tariffing-result">
@@ -125,7 +125,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="about-us-title">{{ $about->getTranslate('title') }}</h1>
+                            <h4 class="about-us-title text-center">{{ $about->getTranslate('title') }}</h4>
                             <div class="lead about-us-lead">
                                 {!!  $about->getTranslate('description') ? $about->getTranslate('description') : ''!!}
                             </div>
@@ -142,7 +142,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="slider-title">{{ $categories_data['slider']->getTranslate('title') }}</h1>
+                        <h4 class="slider-title text-center">{{ $categories_data['slider']->getTranslate('title') }}</h4>
                     </div>
                     <div class="owl-carousel">
 
@@ -207,7 +207,7 @@
         @if($categories_data['benefits']->active == 1)
             <div class="container" >
                 <div class="row">
-                    <h2 class="section-name text-center">{{ trans('base.our_benefits') }}</h2>
+                    <h4 class="section-name text-center">{{ trans('base.our_benefits') }}</h4>
                     @foreach($benefits as $benefit)
                         <div class="col-sm-6 col-md-3">
                             <div class="feature feature-5 boxed boxed--lg boxed--border boxed-r">
@@ -239,7 +239,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h1 class="r-black">{{ $contact->getTranslate('title') }}</h1>
+                        <h4 class="r-black">{{ $contact->getTranslate('title') }}</h4>
                         <div class="lead contact-lead">{!! $contact->getTranslate('short_description') ? $contact->getTranslate('short_description') : '' !!}</div>
                     </div>
                     <div class="col-sm-6">
