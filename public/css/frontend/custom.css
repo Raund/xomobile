@@ -86,6 +86,9 @@
 .r-lead{
     font-weight: 300;
 }
+.imagebg:not(.image--light) .page-content a{
+    color: #FF8D00;
+}
 button.btn.r-white-btn{
     width: initial;
     padding: 0 20px;
@@ -112,11 +115,15 @@ button.btn.r-white-btn{
     bottom: 30px;
 }
 .download-lead{
+    max-height: 200px;
     font-size: 2.5em;
     line-height: 40px;
+    overflow: hidden;
 }
 .about-us-lead{
     color: #2a2b2a;
+    font-size: 14px;
+    line-height: 1.85714286em;
 }
 .about-us .background-image-holder{
     background-color: #fff !important;
@@ -145,7 +152,7 @@ h1.about-us-title{
     color: #2a2b2a !important;
     text-align: center;
 }
-h1.slider-title{
+h4.slider-title{
     margin-top: -20px;
     margin-bottom: 30px;
     color: #fff !important;
@@ -212,6 +219,7 @@ footer ul.social-list li.social-list-item:last-child{
 .contact-lead{
     font-size: 14px;
     color: #252525;
+    line-height: 1.85714286em;
 }
 .tariff-title{
     margin-bottom: 0;
@@ -241,6 +249,10 @@ h2.tariff-title + form{
     -ms-transition: opacity 0.3s;
     -o-transition: opacity 0.3s;
     transition: opacity 0.3s;
+}
+.r-switchable .contact-lead a {
+    color: #FF8D00;
+    opacity: 1;
 }
 .r-switchable a:hover{
     opacity: 1;
@@ -272,7 +284,7 @@ input[type].r-white{
     border-color: #ff9d27;
     background-color: #ffffff;
     text-align: center;
-    font-size: 20px;
+    font-size: 14px;
 }
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {-webkit-appearance: none;
@@ -324,6 +336,9 @@ p strong{
 }
 #faq h1.page-name{
     color: #ff9e27;
+}
+.page-content p{
+    font-size: 14px;
 }
 .question-block{
     border-top: 1px solid #e1e1e1;
@@ -472,6 +487,14 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
     max-width: 100%;
 }
 /********END remake theme serpent***********/
+@media only screen and (max-width: 1200px) {
+    .download-lead{
+        max-height: 120px;
+    }
+    .download-link-wrap{
+        bottom: 10px;
+    }
+}
 @media only screen and (max-width: 991px) {
     .menu-fix .menu-horizontal{
         margin-top: 0;

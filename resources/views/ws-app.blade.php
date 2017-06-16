@@ -108,7 +108,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
 						<ul class="social-list list-inline list--hover text-right">
 							@foreach( $social as $social_item)
-								<li class="social-list-item"><a href="{{ $social_item->getAttributeTranslate('Ссылка на сеть') }}">{!! $social_item->getAttributeTranslate('Картинка соц. сети') !!}</a></li>
+								<li class="social-list-item"><a target="_blank" href="{{ $social_item->getAttributeTranslate('Ссылка на сеть') }}">{!! $social_item->getAttributeTranslate('Картинка соц. сети') !!}</a></li>
 							@endforeach
 						</ul>
 					</div>
