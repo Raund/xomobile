@@ -234,8 +234,8 @@ h2.tariff-title + form{
     padding: 150px 0 !important;
 }
 .r-switchable a{
-    color: rgba(255,146,57,.85);
-    opacity: 0.6;
+    color: #ff8d00;
+    /*opacity: 0.6;*/
     -webkit-transition: opacity 0.3s;
     -moz-transition: opacity 0.3s;
     -ms-transition: opacity 0.3s;
