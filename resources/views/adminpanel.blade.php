@@ -249,6 +249,13 @@
                 </a>
             </li>
 
+            <li @if(Request::is('*/langs'))class="active"@endif>
+                <a href="{{ route('langs_index') }}">
+                    <i class="icon-globe"></i>
+                    <span class="menu-text"> Локализация{{--{{ trans('backend.langs') }}--}} </span>
+                </a>
+            </li>
+
             <li @if(Request::is('*/settings'))class="active"@endif>
                 <a href="{{ route('settings_index') }}">
                     <i class="icon-cog"></i>

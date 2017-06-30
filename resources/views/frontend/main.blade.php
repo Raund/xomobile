@@ -12,8 +12,11 @@
                     <div class="lang text-right">
                         <a class="active-lang" href="#"><img src="{{ asset('/img/frontend/en.png') }}"></a>
                         <ul class="langs">
-                            <li> <a href="{{str_replace(url(App::getLocale()), url('ru'), Request::url())}}"><img src="{{ asset('/img/frontend/ru.png') }}" alt="ru"></a></li>
-                            <li> <a href="{{str_replace(url(App::getLocale()), url('en'), Request::url())}}"><img src="{{ asset('/img/frontend/en.png') }}" alt="usa"></a></li>
+                            @foreach($langs as $lang)
+                                <li> <a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}"><img src="{{ asset('/img/frontend/ru.png') }}" alt="ru"></a></li>
+                            @endforeach
+                            {{--<li> <a href="{{str_replace(url(App::getLocale()), url('ru'), Request::url())}}"><img src="{{ asset('/img/frontend/ru.png') }}" alt="ru"></a></li>
+                            <li> <a href="{{str_replace(url(App::getLocale()), url('en'), Request::url())}}"><img src="{{ asset('/img/frontend/en.png') }}" alt="usa"></a></li>--}}
                         </ul>
                     </div>
                 </div>

@@ -3,7 +3,12 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Lang extends Translate {
-
+    protected $fillable=[
+        'lang',
+        'country',
+        'active',
+        'img'
+    ];
 
 
 }
