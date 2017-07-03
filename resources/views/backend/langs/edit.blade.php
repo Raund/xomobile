@@ -58,6 +58,13 @@
                     </div>
                 </div>
                 <div class="control-group">
+                    <label class="control-label" for="form-field-2">{{ trans('backend.priority') }}</label>
+
+                    <div class="controls">
+                        <input type="number" id="form-field-2" name="priority" {{ $lang -> priority or '' }} />
+                    </div>
+                </div>
+                <div class="control-group">
                     <label class="control-label" for="id-date-picker-1">{{ trans('backend.img') }}</label>
                     {{--<div class="controls">
                         <div class="row-fluid input-append">

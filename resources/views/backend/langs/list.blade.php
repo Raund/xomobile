@@ -49,6 +49,9 @@
                             <th class="hidden-phone center">
                                 Статус
                             </th>
+                            <th class="hidden-phone center">
+                                Приоритет
+                            </th>
 
                             <th></th>
                         </tr>
@@ -77,6 +80,7 @@
                                         <span class="badge badge-important"><i class="icon-remove"></i></span>
                                     @endif
                                 </td>
+                                <td class="center">{{ $lang->priority }}</td>
                                 <td class="td-actions">
                                     <div class="visible-phone visible-desktop action-buttons">
                                         <a class="green" href="{{ $url }}/langs/{{ $lang->id }}">
@@ -87,6 +91,8 @@
                                         </a>--}}
                                     </div>
                                 </td>
+
+
                             </tr>
                         @endforeach
                         </tbody>
@@ -163,10 +169,10 @@
     <script>
         $(function(){
             var oTable1 = $('#sample-table-2').dataTable( {
-                "aaSorting": [[5,'desc']],
+                "aaSorting": [[6,'desc']],
                 "aoColumns": [
                     { "bSortable": false },
-                    null, null,null,null,
+                    null, null,null,null,null,
                     { "bSortable": false }
                 ] } );
         });

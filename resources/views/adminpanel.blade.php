@@ -523,7 +523,7 @@
             //
         });
 
-        $('#id-input-file-ua,#id-input-file-ru,#id-input-file-en,#id-input-file-3').ace_file_input({
+        $( "input:file" ).ace_file_input({
             style:'well',
             btn_choose:'Drop files here or click to choose',
             btn_change:null,

@@ -124,7 +124,7 @@
                                                                 {{--
                                                                  <div class="ace-file-input"><input type="file" name="img" id="id-input-file-2"><label data-title="Choose"><span data-title="No File ..."><i class="icon-upload-alt"></i></span></label><a class="remove" href="#"><i class="icon-remove"></i></a></div>
                                                                 --}}
-                                                                <div class="ace-file-input ace-file-multiple">
+                                                                <div class="ace-file-multiple">
                                                                     <input name='attributes[{{ $key }}]' type="file" id="id-input-file-3">
                                                                     <a class="remove" href="#"><i class="icon-remove"></i></a>
                                                                 </div>
@@ -435,7 +435,7 @@
                                                                                          <div class="ace-file-input"><input type="file" name="img" id="id-input-file-2"><label data-title="Choose"><span data-title="No File ..."><i class="icon-upload-alt"></i></span></label><a class="remove" href="#"><i class="icon-remove"></i></a></div>
                                                                                         --}}
                                                                                         <div class="ace-file-input ace-file-multiple">
-                                                                                            <input name='attributes[{{ $key }}_{{$lang->lang}}]' type="file" id="id-input-file-{{$lang->lang}}">
+                                                                                            <input name='attributes[{{ $key }}_{{$lang->lang}}]' class="showing_img" type="file" id="id-input-file-{{$lang->lang}}">
                                                                                             <a class="remove" href="#"><i class="icon-remove"></i></a>
                                                                                         </div>
                                                                                         {{--<label>

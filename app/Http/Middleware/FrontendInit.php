@@ -30,6 +30,7 @@ class FrontendInit {
 		if (!$currentLang){
 			abort('404');
 		}
+		$langs = Lang::activelangs()->get();
 		// Locale setting
 		App::setLocale($request->lang);
 		$texts = new Text();
@@ -62,7 +63,7 @@ class FrontendInit {
 		view()->share('static_page', $static_page);
 
 		// Share to views global template variables
-		view()->share('langs', Lang::all());
+		view()->share('langs', $langs);
 		view()->share('texts', $texts->init());
 		view()->share('categories_data', $categories_data);
 		view()->share('version', config('app.version'));

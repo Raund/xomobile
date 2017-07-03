@@ -67,7 +67,7 @@ class AdminCategoriesController extends Controller {
 
 	public function create()
 	{
-		$langs = Lang::all();
+		$langs = Lang::activelangs()->get();
 
 		return view('backend.categories.edit',[
 			'langs'=>$langs,
@@ -79,7 +79,7 @@ class AdminCategoriesController extends Controller {
 
 	public function store(Request $request)
 	{
-		$langs = Lang::all();
+		$langs = Lang::activelangs()->get();
 
 		//validation rules
 		foreach($langs as $lang){
@@ -147,7 +147,7 @@ class AdminCategoriesController extends Controller {
 
 	public function edit($type = null)
 	{
-		$langs = Lang::all();
+		$langs = Lang::activelangs()->get();
 		$admin_category = Category::where("link","=","$type")->first();
 
 		//Var article_parent
@@ -187,7 +187,7 @@ class AdminCategoriesController extends Controller {
 
 	public function update(Request $request, $type)
 	{
-		$langs = Lang::all();
+		$langs = Lang::activelangs()->get();
 
 		$category = Category::where('link',$type)->first();
 
@@ -309,7 +309,7 @@ class AdminCategoriesController extends Controller {
 	}
 	/* Сreate array for multilanguage (example- (ua|ru|en)) */
 	private function prepareArticleData($all){
-		$langs = Lang::all();
+		$langs = Lang::activelangs()->get();
 		$all['title'] = '';
 		$all['short_description'] = '';
 		$all['description'] = '';
