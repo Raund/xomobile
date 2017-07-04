@@ -19,7 +19,7 @@ class AdminLangsController extends Controller {
 	 */
 	public function index()
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		return view('backend.langs.list')->with(compact('langs'));
 	}
 

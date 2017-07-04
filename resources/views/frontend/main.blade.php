@@ -49,14 +49,14 @@
                             <div class="bar__module">
                                 <ul class="menu-horizontal text-left">
                                     @if($categories_data['benefits']->active == 1)
-                                        <li> <a class="r-menu-link" data-scroll-id="about-us" href="/{{ App::getLocale() }}#about-us">{{ trans('base.about_us') }}</a> </li>
+                                        <li> <a class="r-menu-link" data-scroll-id="about-us" href="/{{ App::getLocale() }}#about-us">{{ $categories_data['about']->getTranslate('title') }}</a> </li>
                                     @endif
-                                        <li> <a class="r-menu-link" data-scroll-id="prices" href="/{{ App::getLocale() }}#prices">{{ trans('base.prices') }}</a> </li>
+                                    <li> <a class="r-menu-link" data-scroll-id="prices" href="/{{ App::getLocale() }}#prices">{{ $categories_data['price']->getTranslate('title') }}</a> </li>
                                     @if( count($download) !== 0 AND $categories_data['download']->active == 1)
-                                        <li> <a class="r-menu-link" data-scroll-id="download" href="/{{ App::getLocale() }}#download">{{ trans('base.download') }}</a> </li>
+                                        <li> <a class="r-menu-link" data-scroll-id="download" href="/{{ App::getLocale() }}#download">{{ $categories_data['download']->getTranslate('title') }}</a> </li>
                                     @endif
                                     @if(count($contact) !== 0 AND $categories_data['contact']->active == 1)
-                                        <li> <a class="r-menu-link" data-scroll-id="contacts" href="/{{ App::getLocale() }}#contacts">{{ trans('base.contacts') }}</a> </li>
+                                        <li> <a class="r-menu-link" data-scroll-id="contacts" href="/{{ App::getLocale() }}#contacts">{{ $categories_data['contact']->getTranslate('title') }}</a> </li>
                                     @endif
                                 </ul>
                             </div>
@@ -103,18 +103,18 @@
     <section id="prices" class="text-center bg--secondary find-section">
         <div class="container">
             <div class="row">
-                <h4 class="tariff-title text-center">{{ trans('base.find_name') }}</h4>
+                <h4 class="tariff-title text-center">{{ $texts->get('find_name') }}</h4>
                 <form action="" id="tariffing" method="post">
                     <div class="col-md-12">
                         <div id="tariffing-result">
-                            <div id="error" style="display: none">{{ trans('base.connection_error') }}</div>
-                            <div id="tariff-not-found" style="display: none;">{{ trans('base.tariff_not_found') }}</div>
+                            <div id="error" style="display: none">{{ $texts->get('connection_error') }}</div>
+                            <div id="tariff-not-found" style="display: none;">{{ $texts->get('tariff_not_found') }}</div>
                             <div id="tariffing-operator"></div>
                             <div id="tariffing-rate"></div>
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6 col-md-offset-3">
-                        <input class="validate-required validate-email r-white" type="text" name="code" id="insert_field" placeholder="{{ trans('base.find_placeholder') }}">
+                        <input class="validate-required validate-email r-white" type="text" name="code" id="insert_field" placeholder="{{ $texts->get('tariff_not_found') }}">
                         <input type="hidden" name="url" value="/{{ App::getLocale() }}/rate"/>
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                     </div>
@@ -128,7 +128,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="about-us-title text-center">{{ $about->getTranslate('title') }}</h4>
+                            <h4 class="about-us-title text-center">{{ $categories_data['about']->getTranslate('title') }}</h4>
                             <div class="lead about-us-lead">
                                 {!!  $about->getTranslate('description') ? $about->getTranslate('description') : ''!!}
                             </div>
@@ -182,7 +182,7 @@
         <section class="r-switchable">
             <div class="container">
                 <div class="row">
-                    <h2 class="section-name text-center">{{ trans('base.our_priced') }}</h2>
+                    <h2 class="section-name text-center">{{ $categories_data['price']->getTranslate('title') }}</h2>
                     @foreach($price as $price_item)
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="feature feature-5 boxed boxed--lg boxed--border">
@@ -210,7 +210,7 @@
         @if($categories_data['benefits']->active == 1)
             <div class="container" >
                 <div class="row">
-                    <h4 class="section-name text-center">{{ trans('base.our_benefits') }}</h4>
+                    <h4 class="section-name text-center">{{ $categories_data['benefits']->getTranslate('title') }}</h4>
                     @foreach($benefits as $benefit)
                         <div class="col-sm-6 col-md-3">
                             <div class="feature feature-5 boxed boxed--lg boxed--border boxed-r">
@@ -242,16 +242,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="r-black">{{ $contact->getTranslate('title') }}</h4>
+                        <h4 class="r-black">{{ $categories_data['contact']->getTranslate('title') }}</h4>
                         <div class="lead contact-lead">{!! $contact->getTranslate('short_description') ? $contact->getTranslate('short_description') : '' !!}</div>
                     </div>
                     <div class="col-sm-6">
                         <div class="row">
                             <form action="" id="callback" method="post">
-                                <div class="col-xs-12"><input type="text" name="name" class="validate-required" placeholder="{{ trans('base.your_name') }}"> </div>
+                                <div class="col-xs-12"><input type="text" name="name" class="validate-required" placeholder="{{ $texts->get('your_name') }}"> </div>
                                 <div class="col-xs-12"><input type="email" name="email" class="validate-required validate-email" placeholder="E-mail"> </div>
-                                <div class="col-xs-12"><textarea rows="8" name="text" class="validate-required" placeholder="{{ trans('base.message') }}"></textarea> </div>
-                                <div class="col-xs-12"> <button type="submit" id="submit-send" class="btn btn--primary type--uppercase">{{ trans('base.send') }}</button> </div>
+                                <div class="col-xs-12"><textarea rows="8" name="text" class="validate-required" placeholder="{{ $texts->get('message') }}"></textarea> </div>
+                                <div class="col-xs-12"> <button type="submit" id="submit-send" class="btn btn--primary type--uppercase">{{ $texts->get('send') }}</button> </div>
                                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             </form>
                         </div>
