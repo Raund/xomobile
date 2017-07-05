@@ -11,8 +11,7 @@ class Lang extends Translate {
         'priority'
     ];
     public function scopeActiveLangs($query){
-        $query->where ('active',1)
-            ->orderBy('priority','desc');
+        $query->where ('active',1);
     }
 
 }
