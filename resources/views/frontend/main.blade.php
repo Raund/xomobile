@@ -6,11 +6,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-8">
+{{--
                     <div class="phone">{{ $texts->get('telephone') }}</div>
+--}}
                 </div>
                 <div class="col-xs-4">
                     <div class="lang text-right">
-                        <a class="active-lang" href="#"><img src="{{ asset('/img/frontend/en.png') }}"></a>
+                        <a class="active-lang" href="#"><img src=""></a>
                         <ul class="langs">
                             @foreach($langs as $lang)
                                 <li> <a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}"><img src="{{ $lang->img }}" alt="{{ $lang->lang }}"></a></li>

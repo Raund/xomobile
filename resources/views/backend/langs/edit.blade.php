@@ -61,7 +61,7 @@
                     <label class="control-label" for="form-field-2">{{ trans('backend.priority') }}</label>
 
                     <div class="controls">
-                        <input type="number" id="form-field-2" name="priority" {{ $lang -> priority or '' }} />
+                        <input type="number" id="form-field-2" name="priority" value='{{ $lang -> priority or '' }}' />
                     </div>
                 </div>
                 <div class="control-group">
