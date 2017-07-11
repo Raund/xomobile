@@ -12,8 +12,8 @@ $(function() {
 /******END owl-corousel options******/
 
 /**********languages**************/
-    var myLang = window.location.pathname.split('/').slice(1);
-    var activeLang = $('.langs li a img[alt=' + myLang + ']').attr('src');
+    var myLang = window.location.pathname.split('/');
+    var activeLang = $('.langs li a img[alt=' + myLang[1] + ']').attr('src');
     $(".active-lang > img").attr('src',activeLang);
     $('.active-lang').on("click", function () {
         if($('.langs').hasClass('active')) {
