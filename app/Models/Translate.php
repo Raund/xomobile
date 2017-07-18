@@ -25,8 +25,11 @@ class Translate extends Model {
         $langs = Lang::all();
         $articleArray =  $this->toArray();
         $attributes = json_decode($articleArray['attributes'], true);
+        //dd($attributes);
         $pieces = explode("@|;", $attributes[$key]);
-        if(count($pieces) < count($langs) && count($langs) == 2)
+        //dd(count($langs)-1);
+        if(count($pieces) == 1)
+            //dd($attributes[$key]);
             return $attributes[$key];
         if(!$current_lang){
             $current_lang = App::getLocale();
