@@ -141,7 +141,7 @@ class ArticleController extends Controller {
 			//Send item on admin email address
 			Mail::send('emails.contact', $all, function($message){
 				$email = getSetting('config.email');
-				$message->to($email, 'Byben')->subject('Сообщение с сайта "Byben"');
+				$message->to($email, 'Xomobile')->subject('Сообщение с сайта "xomobile"');
 			});
 			return response()->json([
 				'success' => 'true'
