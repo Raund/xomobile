@@ -331,7 +331,7 @@
             </div>
         </div><!--/#ace-settings-container-->
     </div><!--/.main-content-->
-
+    <div id="token_rate" style="display: none">{{csrf_token()}}</div>
     </div><!--/.main-container-->
 
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse hidden-print">

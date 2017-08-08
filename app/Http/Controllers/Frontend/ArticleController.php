@@ -158,13 +158,45 @@ class ArticleController extends Controller {
 			$json = @file_get_contents($api_link);
 
 			//put content to file
-			if(@file_put_contents('../content.json', $json)){
+			if(@file_put_contents(base_path('/rate/content.json'), $json)){
 				return response()->json([
 					'success' => 'success'
+				]);
+			}else{
+				return response()->json([
+					'success' => 'error'
 				]);
 			}
 
 		}
+
+	}
+
+	public function update_rate_debug(Request $request){
+
+			//get val from DB
+			$api_link = getSetting('tariffing');
+
+			//get content from link
+			$json = @file_get_contents($api_link);
+
+			echo '============= DOCUMENT ROOT START =============<br>';
+			echo $_SERVER['DOCUMENT_ROOT'];
+			echo '<br>============== DOCUMENT ROOT END ==============<br>';
+
+			echo '============= base_path(\'/rate/content.json\') START =============<br>';
+			echo base_path('/rate/content.json');
+			echo '<br>============== base_path END ==============<br>';
+
+
+			//put content to file
+			if(file_put_contents(base_path('/rate/content.json'), $json)){
+				echo '<br><br>============= RESULT OK =============<br>';
+			}else{
+				echo '<br><br>=========== RESULT ERROR =============<br>';
+			}
+
+
 
 	}
 	/**
@@ -181,7 +213,7 @@ class ArticleController extends Controller {
 			//$api_link = getSetting('tariffing');
 
 			//get content from link
-			$json = @file_get_contents('../content.json');
+			$json = @file_get_contents(base_path('/rate/content.json'));
 
 			//err when don't have access
 			if(!$json){

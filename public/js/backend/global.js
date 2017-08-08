@@ -337,7 +337,7 @@ $(function(){
 $('a[data-attribute = "update_rate"]').on('click',function(event){
     event.preventDefault();
     var data = {
-        _token: $('#token').text()
+        _token: $('#token_rate').text()
     };
     console.log(data);
     $.ajax({
