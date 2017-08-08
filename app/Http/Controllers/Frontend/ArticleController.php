@@ -148,6 +148,25 @@ class ArticleController extends Controller {
 			]);
 		}
 	}
+
+	public function update_rate(Request $request){
+		if ($request ->isMethod('post')) {
+			//get val from DB
+			$api_link = getSetting('tariffing');
+
+			//get content from link
+			$json = @file_get_contents($api_link);
+
+			//put content to file
+			if(@file_put_contents('../content.json', $json)){
+				return response()->json([
+					'success' => 'success'
+				]);
+			}
+
+		}
+
+	}
 	/**
 	 * getRate from JSONE
 	 *

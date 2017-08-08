@@ -103,11 +103,17 @@
 
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
                         <li>
-                             <a target="_blank" href="{{ asset('/') }}">
-                                 <i class="icon-cog"></i>
-                                 {{ trans('backend.go_to_site') }}
-                             </a>
-                         </li>
+                            <a target="_blank" href="{{ asset('/') }}">
+                                <i class="icon-cog"></i>
+                                {{ trans('backend.go_to_site') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" data-attribute='update_rate' href="{{ route('update_rate') }}">
+                                <i class="icon-cloud-download"></i>
+                                Обновить тарифы
+                            </a>
+                        </li>
                         <!--  <li>
                              <a href="#">
                                  <i class="icon-user"></i>

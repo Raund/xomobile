@@ -28,7 +28,7 @@ Route::post('/forgot', array('as' => 'forgot', 'uses' => 'Auth\AuthController@po
 /*/Auth group routes*/
 
 Route::get('/', 'Frontend\HomeController@index');//Перенаправлення на адресу з локалю
-
+Route::post('/update_rate', ['uses' => 'Frontend\ArticleController@update_rate','as' => 'update_rate']);//Обновление тарифа
 
 
 /*/Callback group route*/
@@ -86,6 +86,7 @@ Route::group(['prefix'=>'adminWoit', 'middleware' => ['auth', 'backend.init']], 
 	Route::delete('/orders/{id}', ['uses' => 'Backend\AdminOrdersController@destroy', 'as' => 'orders_delete']);//Вывод списка заказов*/
 
 
+
 });
 /*/Backend group routes*/
 
@@ -96,6 +97,7 @@ Route::group(['middleware' => 'frontend.init'], function(){
 	Route::get('/{lang}/{type?}', ['uses' => 'Frontend\ArticleController@index', 'as' => 'article_index']);
 	Route::get('/{lang}/{type}/{id}', ['uses' => 'Frontend\ArticleController@show', 'as' => 'article_show'])->where('type', 'page', 'rate');
 	Route::post('/{lang}/rate', ['uses' => 'Frontend\ArticleController@rate','as' => 'rate']);//Обработчик тарифа
+
 
 });
 /*Frontend group routes*/

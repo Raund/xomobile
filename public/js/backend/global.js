@@ -333,6 +333,35 @@ $(function(){
     init_wysiwyg();
 });
 
+/*Update rate*/
+$('a[data-attribute = "update_rate"]').on('click',function(event){
+    event.preventDefault();
+    var data = {
+        _token: $('#token').text()
+    };
+    console.log(data);
+    $.ajax({
+        url: '/update_rate',
+        method: 'POST',
+        data: data,
+        dataType : "json",
+        success: function(data){
+            //console.info('Server response: ', data);
+            if(data.success){
+               alert('Успешно обновлено!');
+            }
+            else{
+                alert('Ошибка при обновлении!');
+            }
+        },
+        error:function(data){
+            alert('Ошибка при обновлении!');
+        }
+
+    });
+    event.preventDefault();
+});
+/*/Update rate*/
 function init_wysiwyg(){
     var id = '';
     var editors = $('textarea');
