@@ -69,7 +69,7 @@ class AdminArticlesController extends Controller {
 
 	public function create($type)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$admin_category = Category::where("link","=","$type")->first();
 
 		//Get group attributes for article_parent
@@ -94,7 +94,7 @@ class AdminArticlesController extends Controller {
 
 	public function store(Request $request, $type)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		//validation rules
 		foreach($langs as $lang){
@@ -181,7 +181,7 @@ class AdminArticlesController extends Controller {
 		//Создание папки соответсвующие id
 		Storage::makeDirectory('upload/articles/' . $id, '0777', true, true);
 
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$admin_article = Article::where("id","=","$id")->first();
 
 		//Var article_id
@@ -221,7 +221,7 @@ class AdminArticlesController extends Controller {
 
 	public function update(Request $request, $type, $id)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		//validation rules
 		foreach($langs as $lang){
@@ -390,7 +390,7 @@ class AdminArticlesController extends Controller {
 	}
 	/* Сreate array for multilanguage (example- (ua|ru|en)) */
 	private function prepareArticleData($all){
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$all['title'] = '';
 		$all['short_description'] = '';
 		$all['description'] = '';
@@ -430,7 +430,7 @@ class AdminArticlesController extends Controller {
 
 	/* Сreate array for multilanguage (example- (ua|ru|en)) */
 	private function prepareAttributesData($all){
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$first_lang = $langs->first()['lang'];
 		//dd($first_lang);
 		foreach($all as $key => $value){

@@ -39,6 +39,7 @@ class Translate extends Model {
     }
     public function getLangsParts($data, $parts, $var_lang, $part = null){
         foreach($data as $key => $item){
+            //dd($data);
             if($var_lang == $item['lang'] && isset($parts[$key]) && $parts[$key]){
                 $part = $parts[$key];
             }
