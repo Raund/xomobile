@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
-                    <div class="phone">{{ $texts->get('telephone') }}</div>
+                    {{--<div class="phone">{{ $texts->get('telephone') }}</div>--}}
                 </div>
                 <div class="col-xs-6">
                     <div class="lang text-right">

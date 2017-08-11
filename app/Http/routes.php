@@ -28,6 +28,7 @@ Route::post('/forgot', array('as' => 'forgot', 'uses' => 'Auth\AuthController@po
 /*/Auth group routes*/
 
 Route::get('/', 'Frontend\HomeController@index');//Перенаправлення на адресу з локалю
+
 Route::post('/update_rate', ['uses' => 'Frontend\ArticleController@update_rate','as' => 'update_rate']);//Обновление тарифа
 //Route::get('/update_rate_debug', ['uses' => 'Frontend\ArticleController@update_rate','as' => 'update_rate']);//Обновление тарифа
 
@@ -99,7 +100,8 @@ Route::group(['middleware' => 'frontend.init'], function(){
 	Route::get('/{lang}/{type}/{id}', ['uses' => 'Frontend\ArticleController@show', 'as' => 'article_show'])->where('type', 'page', 'rate');
 	Route::post('/{lang}/rate', ['uses' => 'Frontend\ArticleController@rate','as' => 'rate']);//Обработчик тарифа
 
-
+	Route::get('/{lang}/payment', 'Frontend\PaymentController@index'); // Форма пополнения
+	Route::post('/{lang}/payment/send', 'Frontend\PaymentController@send'); // Пополнение
 });
 /*Frontend group routes*/
 
