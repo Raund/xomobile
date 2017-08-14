@@ -131,6 +131,41 @@
         </section>
     @endif
 
+    <section id="decision" class="text-center bg--secondary find-section">
+        <div class="container">
+            <div class="row">
+                <h4 class="section-name text-center">Наши решения</h4>
+                <div class="col-sm-6 col-md-4">
+                    <div class="decision-block">
+                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_roaming.png')}})"></div>
+                        <div class="decision-name_wrap">
+                            <h4 class="decision-name">Роуминг</h4>
+                        </div>
+                        <a href="#" class="decision-more">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="decision-block">
+                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_m2m.png')}})"></div>
+                        <div class="decision-name_wrap">
+                            <h4 class="decision-name">M2M и SIM трекинг</h4>
+                        </div>
+                        <a href="#" class="decision-more">Узнать больше</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="decision-block">
+                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_app.png')}})"></div>
+                        <div class="decision-name_wrap">
+                            <h4 class="decision-name">Приложение XOmobile</h4>
+                        </div>
+                        <a href="#" class="decision-more">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="cover unpad--bottom switchable text-center-xs bg--secondary imagebg">
         <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/slider_bg.png') }}"> </div>
         @if($categories_data['slider']->active == 1)

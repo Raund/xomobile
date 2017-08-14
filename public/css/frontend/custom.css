@@ -153,7 +153,7 @@ h1.about-us-title{
     text-align: center;
 }
 h4.slider-title{
-    margin-top: -20px;
+    margin-top: 30px;
     margin-bottom: 30px;
     color: #fff !important;
     text-align: center;
@@ -491,6 +491,56 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
 .feature h4 + p{
     max-width: 100%;
 }
+
+/********decision***********/
+.decision-block{
+    margin-bottom: 35px;
+    padding: 0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+}
+.decision-img{
+    width: 100%;
+    height: 300px;
+    margin-bottom: 25px;
+    background-color: #ff991e;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+.decision-name_wrap{
+    display: table;
+    width: 100%;
+    padding: 0 15px;
+    min-height: 64px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+.decision-name{
+    display: table-cell;
+    vertical-align: middle;
+}
+.decision-more{
+    display: inline-block;
+    padding: 14px 35px 17px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    border: solid 1px #ffab46;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffab46;
+}
+.decision-more:hover{
+    background-color: #ffab46;
+    color: #ffffff;
+    text-decoration: none;
+}
+/********END decision***********/
+
 /********END remake theme serpent***********/
 @media only screen and (max-width: 1200px) {
     .download-lead{
