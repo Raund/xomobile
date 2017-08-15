@@ -63,7 +63,7 @@
 @endsection
 
 @section('content')
-    @if( count($download) !== 0 AND $categories_data['download']->active == 1)
+    @if(isset($download) AND count($download) !== 0 AND $categories_data['download']->active == 1)
         <section id="download" class="r-section cover switchable text-center-xs bg--secondary imagebg download-section">
             <div class="background-image-holder r-background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/nav_bg.png') }}"> </div>
             <div class="container">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6 col-md-offset-3">
-                        <input class="validate-required validate-email r-white" type="text" name="code" id="insert_field" placeholder="{{ $texts->get('tariff_not_found') }}">
+                        <input class="validate-required validate-email r-white" type="text" name="code" id="insert_field" placeholder="{{ $texts->get('find_placeholder') }}">
                         <input type="hidden" name="url" value="/{{ App::getLocale() }}/rate"/>
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                     </div>
@@ -115,7 +115,7 @@
             </div>
         </div>
     </section>
-    @if($categories_data['about']->active == 1)
+    @if(isset($about) AND count($about) !== 0  AND $categories_data['about']->active == 1)
         <section id="about-us" class="cover unpad--bottom switchable text-center-xs bg--secondary imagebg about-us">
             <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/about_us_bg.png') }}"> </div>
                 <div class="container">
@@ -131,44 +131,29 @@
         </section>
     @endif
 
-    <section id="decision" class="text-center bg--secondary find-section">
+    @if(isset($solutions) AND count($solutions) !== 0  AND $categories_data['solutions']->active == 1)
+        <section id="decision" class="text-center bg--secondary find-section">
         <div class="container">
             <div class="row">
-                <h4 class="section-name text-center">Наши решения</h4>
-                <div class="col-sm-6 col-md-4">
+                <h4 class="section-name text-center">{{ $categories_data['solutions']->getTranslate('title') }}</h4>
+                @foreach($solutions as $solution)
+                    <div class="col-sm-6 col-md-4">
                     <div class="decision-block">
-                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_roaming.png')}})"></div>
+                        <div class="decision-img" style="background-image: url('{{ asset( $solution->getAttributeTranslate('Картинка')) }}')"></div>
                         <div class="decision-name_wrap">
-                            <h4 class="decision-name">Роуминг</h4>
+                            <h4 class="decision-name">{{ $solution->getTranslate('title') }}</h4>
                         </div>
-                        <a href="#" class="decision-more">Узнать больше</a>
+                        <a href="/{{ App::getLocale() }}/{{ $categories_data['solutions']->link }}/{{ $solution->id }}" target="_blank" class="decision-more">{{ $texts->get('more') }}</a>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="decision-block">
-                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_m2m.png')}})"></div>
-                        <div class="decision-name_wrap">
-                            <h4 class="decision-name">M2M и SIM трекинг</h4>
-                        </div>
-                        <a href="#" class="decision-more">Узнать больше</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="decision-block">
-                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_app.png')}})"></div>
-                        <div class="decision-name_wrap">
-                            <h4 class="decision-name">Приложение XOmobile</h4>
-                        </div>
-                        <a href="#" class="decision-more">Узнать больше</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-
+    @endif
     <section class="cover unpad--bottom switchable text-center-xs bg--secondary imagebg">
         <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/slider_bg.png') }}"> </div>
-        @if($categories_data['slider']->active == 1)
+        @if(isset($slider) AND count($slider) !== 0  AND $categories_data['slider']->active == 1)
 
             <div class="container">
                 <div class="row">
@@ -191,7 +176,7 @@
             </div>
         @endif
     </section>
-    @if( count($video) !== 0 AND $categories_data['video']->active == 1)
+    @if(isset($video) AND count($video) !== 0 AND $categories_data['video']->active == 1)
         <section class="switchable r-switchable r-switchable-video text-center">
             <div class="background-image-holder"><img alt="background" src="{{ asset('/img/frontend/phone_in_hand_bg.jpg') }}"> </div>
             <div class="container">
@@ -206,7 +191,7 @@
 
         </section>
     @endif
-    @if($categories_data['price']->active == 1)
+    @if(isset($price) AND count($price) !== 0 AND $categories_data['price']->active == 1)
         <section class="r-switchable">
             <div class="container">
                 <div class="row">
@@ -235,7 +220,7 @@
         </section>
     @endif
     <section id="benefits">
-        @if($categories_data['benefits']->active == 1)
+        @if(isset($benefits) AND count($benefits) !== 0 AND $categories_data['benefits']->active == 1)
             <div class="container" >
                 <div class="row">
                     <h4 class="section-name text-center">{{ $categories_data['benefits']->getTranslate('title') }}</h4>
@@ -265,7 +250,7 @@
         @endif
     </section>
 
-    @if(count($contact) !== 0 AND $categories_data['contact']->active == 1)
+    @if(isset($contact) AND count($contact) !== 0 AND $categories_data['contact']->active == 1)
         <section id="contacts" class="switchable r-switchable bg--secondary">
             <div class="container">
                 <div class="row">
