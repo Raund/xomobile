@@ -23,7 +23,9 @@ class BackendInit {
 
 	public function handle($request, Closure $next)
 	{
-		$admin_categories = Category::where('parent_id',0)->get();
+		$admin_categories = Category::where('parent_id',0)
+			->orderBy('priority','desc')
+			->get();
 		//Подключение в Backend url типа
 		$url = url('adminWoit');
 		//Подключение в Backend version

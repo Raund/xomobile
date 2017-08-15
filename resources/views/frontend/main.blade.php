@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="col-md-offset-3 col-md-6 col-md-offset-3">
-                        <input class="validate-required validate-email r-white" type="text" name="code" id="insert_field" placeholder="{{ $texts->get('tariff_not_found') }}">
+                        <input class="validate-required validate-email r-white" type="text" name="code" id="insert_field" placeholder="{{ $texts->get('find_placeholder') }}">
                         <input type="hidden" name="url" value="/{{ App::getLocale() }}/rate"/>
                         <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                     </div>
@@ -131,41 +131,26 @@
         </section>
     @endif
 
-    <section id="decision" class="text-center bg--secondary find-section">
+    @if( isset($solutions) AND count($solutions) !== 0  AND $categories_data['solutions']->active == 1)
+        <section id="decision" class="text-center bg--secondary find-section">
         <div class="container">
             <div class="row">
-                <h4 class="section-name text-center">Наши решения</h4>
-                <div class="col-sm-6 col-md-4">
+                <h4 class="section-name text-center">{{ $categories_data['solutions']->getTranslate('title') }}</h4>
+                @foreach($solutions as $solution)
+                    <div class="col-sm-6 col-md-4">
                     <div class="decision-block">
-                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_roaming.png')}})"></div>
+                        <div class="decision-img" style="background-image: url('{{ asset( $solution->getAttributeTranslate('Картинка')) }}')"></div>
                         <div class="decision-name_wrap">
-                            <h4 class="decision-name">Роуминг</h4>
+                            <h4 class="decision-name">{{ $solution->getTranslate('title') }}</h4>
                         </div>
-                        <a href="#" class="decision-more">Узнать больше</a>
+                        <a href="/{{ App::getLocale() }}/{{ $categories_data['solutions']->link }}/{{ $solution->id }}" target="_blank" class="decision-more">{{ $texts->get('more') }}</a>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="decision-block">
-                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_m2m.png')}})"></div>
-                        <div class="decision-name_wrap">
-                            <h4 class="decision-name">M2M и SIM трекинг</h4>
-                        </div>
-                        <a href="#" class="decision-more">Узнать больше</a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="decision-block">
-                        <div class="decision-img" style="background-image: url({{ asset('/img/frontend/img_app.png')}})"></div>
-                        <div class="decision-name_wrap">
-                            <h4 class="decision-name">Приложение XOmobile</h4>
-                        </div>
-                        <a href="#" class="decision-more">Узнать больше</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
-
+    @endif
     <section class="cover unpad--bottom switchable text-center-xs bg--secondary imagebg">
         <div class="background-image-holder"> <img alt="background" src="{{ asset('/img/frontend/slider_bg.png') }}"> </div>
         @if($categories_data['slider']->active == 1)
