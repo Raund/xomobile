@@ -222,6 +222,7 @@ footer ul.social-list li.social-list-item:last-child{
     line-height: 1.85714286em;
 }
 .tariff-title{
+    margin-top: 20px;
     margin-bottom: 0;
 }
 h2.tariff-title + form{
@@ -542,6 +543,83 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
 }
 /********END decision***********/
 
+/*************make burger***********/
+.button-menu {
+    display: none;
+    position: absolute;
+    top: 13px;
+    right: 25px;
+    width: 25px;
+    padding: 10px 0;
+    color: #ffffff;
+    text-align: center;
+    z-index: 999;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease; }
+
+.close.icon:after {
+  position: absolute;
+  right: 0;
+  width: 21px;
+  height: 2px;
+  content: '';
+  background-color: currentColor;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+.close.icon:before {
+  position: absolute;
+  right: 0;
+  width: 21px;
+  height: 2px;
+  content: '';
+  background-color: currentColor;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
+
+.close.icon {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  color: #fff;
+  z-index: 99; }
+
+.menu-i.icon:after {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 17px;
+  height: 2px;
+  content: '';
+  background-color: currentColor; }
+
+.menu-i.icon:before {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 17px;
+  height: 2px;
+  content: '';
+  background-color: currentColor; }
+
+.menu-i.icon {
+  position: absolute;
+  width: 17px;
+  height: 2px;
+  background-color: currentColor;
+  color: #fff;
+  z-index: 99; }
+
+.icon,
+.icon:before,
+.icon:after {
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease; }
+ 
+/*************end make burger***********/
+
 /********END remake theme serpent***********/
 @media only screen and (max-width: 1200px) {
     .download-lead{
@@ -553,7 +631,7 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
 }
 @media only screen and (max-width: 991px) {
     .menu-fix .menu-horizontal{
-        margin-top: 0;
+        display: none;
     }
     .menu-fix .menu-horizontal li{
         display: inline-block;
@@ -576,7 +654,34 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
         padding-bottom: 5px;
         text-align: center;
     }
+        .bar-2 .menu-horizontal > li, .bar-1 .menu-horizontal > li{
+        display: block;
+        margin-left: 10px !important;
+    }
+    .button-menu{
+        display: block;
+    }
+    .bar .menu-horizontal {
+        position: fixed;
+        top: 90px;
+        right: -220px;
+        text-align: left;
+        width: 200px;
+        padding: 10px;
+        background-color: #ff991e;
+        border-radius: 10px 0 0 10px;
+        font-size: 18px;
+        box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.75);
+        -webkit-transition: all 0.8s ease;
+        transition: all 0.8s ease;    
+        }
+    .bar .menu-horizontal.active {
+        right: 0; 
+        -webkit-transition: all 0.8s ease;
+        transition: all 0.8s ease;
+    } 
 }
+
 @media only screen and (max-width: 991px) and (min-width: 768px){
     .bar .menu-horizontal.menu-horizontal-faq{
         display: inline-block;
@@ -607,10 +712,10 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
         z-index: 5;
         margin-bottom: -250px;
     }
-    .bar .menu-horizontal{
+    /* .bar .menu-horizontal{
         top: 0;
         text-align: center;
-    }
+    } */
     .bar .menu-horizontal.menu-horizontal-faq {
         top: 10px;
         text-align: right;
@@ -627,6 +732,12 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
     }
     .r-background-image-holder {
         background-position: 70% 50px !important;
+    }
+    .button-menu{
+        top: 55px;
+    }
+    .r-section {
+        padding-top: 20em;
     }
 }
 @media only screen and (max-width: 480px) {

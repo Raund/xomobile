@@ -11,6 +11,13 @@ $(function() {
     });
 /******END owl-corousel options******/
 
+    $('.button-menu').click(function(){
+        $(this).toggleClass('active');
+        $('.bar .menu-horizontal').toggleClass('active');
+        $('.button-menu .icon').toggleClass('menu-i').toggleClass('close');
+    });
+
+
 /**********languages**************/
     var myLang = window.location.pathname.split('/');
     var activeLang = $('.langs li a img[alt=' + myLang[1] + ']').attr('src');
@@ -27,9 +34,15 @@ $(function() {
 /**********scrollTo**************/
     $("a.r-menu-link").click(function() {
         var scrollId = $(this).attr('data-scroll-id');
-        $('html, body').animate({
-            scrollTop: $("#" + scrollId).offset().top
-        }, 1000);
+        if (scrollId === 'prices') {
+            $('html, body').animate({
+                scrollTop: ($("#" + scrollId).offset().top - 85)
+            }, 1000);
+        } else{
+            $('html, body').animate({
+                scrollTop: ($("#" + scrollId).offset().top - 70)
+            }, 1000);
+        }
     });
 /**********END scrollTo**************/
 
@@ -101,10 +114,16 @@ $(function() {
     $(window).scroll(function(){                              // отслеживаем событие
         if ( $(window).scrollTop() >= 150 ){                   // ставим условие
             $('.menu-fix').css('display','block');         // определяем действие
+            $('.button-menu').css({'top':'25px', 'position':'fixed'});         // определяем действие
+        } else {
+            $('.menu-fix').css('display','none');  
+            if( $(window).width() > 768) {
+                $('.button-menu').css({'top':'13px','position':'absolute'});         // определяем действие
+            } else {
+                $('.button-menu').css({'top':'55px','position':'absolute'});         // определяем действие
+            }
         }
-        else {
-            $('.menu-fix').css('display','none');         // определяем действие
-        }
+      // определяем действие
     });
 /**********END sfixed menu**************/
 
