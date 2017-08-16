@@ -14,19 +14,24 @@
                         <li> > {{ $categories_data['faq']->getTranslate('title')}}</li>
                     </ul>
                     <h1 class="page-name">{{ $categories_data['faq']->getTranslate('title')}}</h1>
+
                     @forelse($faq as $faq_item)
+
                         <div class="question-block">
                             <div class="question"><i class="fa fa-angle-down" aria-hidden="true"></i>{{ $faq_item->getTranslate('title') }}</div>
                             <div class="answer">
                                 {!! $faq_item->getTranslate('short_description') ? $faq_item->getTranslate('short_description') : '' !!}
                             </div>
                         </div>
+
                     @empty
                         Нет записей
                     @endforelse
+
                 </div>
             </div>
         </div>
     </section>
+    
 @endsection
 

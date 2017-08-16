@@ -1,7 +1,11 @@
 $(function() {
+
+/******change bg for mobile******/
     if ( $(window).width() < 768){
         $('#download .r-background-image-holder > img').attr("src","img/frontend/nav_bg_mobile.png");
     }
+/******END change bg for mobile******/
+
 /******owl-corousel options******/
     $(".owl-carousel").owlCarousel({
         singleItem: true,
@@ -11,12 +15,13 @@ $(function() {
     });
 /******END owl-corousel options******/
 
+/******Button burger ******/
     $('.button-menu').click(function(){
         $(this).toggleClass('active');
         $('.bar .menu-horizontal').toggleClass('active');
         $('.button-menu .icon').toggleClass('menu-i').toggleClass('close');
     });
-
+/******END Button burger ******/
 
 /**********languages**************/
     var myLang = window.location.pathname.split('/');
@@ -62,14 +67,14 @@ $(function() {
     $('.flex-gallery').each(function(){
         $(this).unitegallery({
             gallery_theme: "tilesgrid",
-            gallery_width:"100%",              //gallery width
+            gallery_width:"100%",              
             grid_space_between_cols:15,
             grid_space_between_rows:25,
             grid_space_between_mobile:0,
             tile_enable_border:false,
             tile_enable_shadow:false,
             grid_padding:0,
-            tile_width: 270,						//tile width
+            tile_width: 270,						
             tile_height: 250,
             grid_num_rows:10
         });
@@ -81,12 +86,10 @@ $(function() {
         var slide_id = $(this).attr('data-slide-id');
         $('#overlay').fadeIn(400,
             function(){
-                // console.log(service_id);
                 $('[data-popup-id='+slide_id+']')
                     .css('display', 'block')
                     .animate({opacity: 1, top: '45%'}, 200);
             });
-        //Popup advice ClOSE
         $('#overlay').click( function(){
             $('[data-popup-id='+slide_id+']')
                 .animate({opacity: 0, top: '45%'}, 200,
@@ -110,20 +113,20 @@ $(function() {
         });
     });
 /**********END slider pop-up**************/
+
 /**********fixed menu**************/
-    $(window).scroll(function(){                              // отслеживаем событие
-        if ( $(window).scrollTop() >= 150 ){                   // ставим условие
-            $('.menu-fix').css('display','block');         // определяем действие
-            $('.button-menu').css({'top':'25px', 'position':'fixed'});         // определяем действие
+    $(window).scroll(function(){                             
+        if ( $(window).scrollTop() >= 150 ){                  
+            $('.menu-fix').css('display','block');     
+            $('.button-menu').css({'top':'25px', 'position':'fixed'}); 
         } else {
             $('.menu-fix').css('display','none');  
             if( $(window).width() > 768) {
-                $('.button-menu').css({'top':'13px','position':'absolute'});         // определяем действие
+                $('.button-menu').css({'top':'13px','position':'absolute'});       
             } else {
-                $('.button-menu').css({'top':'55px','position':'absolute'});         // определяем действие
+                $('.button-menu').css({'top':'55px','position':'absolute'});        
             }
         }
-      // определяем действие
     });
 /**********END sfixed menu**************/
 
@@ -131,7 +134,6 @@ $(function() {
     $('#submit-send').on('click', function(event){
         $('#submit-send').attr('disabled', true);
         var data = new FormData($('form#callback')[0]);
-        //console.log(data);
         $.ajax({
             url: '',
             method: 'POST',
@@ -140,7 +142,6 @@ $(function() {
             data: data,
             dataType : "json",
             success: function(data){
-                //console.info('Server response: ', data);
                 if(data.success){
                     swal(trans['base.success'], "", "success");
                     jQuery("#callback").trigger("reset");
@@ -154,13 +155,13 @@ $(function() {
             error:function(data){
                 swal(trans['base.error']);
                 $("#submit-send").attr('disabled', false);
-                //  jQuery("#resume-form").trigger("reset");
             }
 
         });
         event.preventDefault();
     });
 /**********END call-back**************/
+
 /**********send code country**************/
     var tariffsCache = {};
 
@@ -171,7 +172,6 @@ $(function() {
     var clearTariffingResult = function(){
         $('#tariffing-operator').text('');
         $('#tariffing-rate').text('');
-        //$('#tariffing-result').hide();
     };
 
     $('#insert_field').keypress(function(e){
@@ -203,10 +203,6 @@ $(function() {
             return;
         }
 
-        //clearTariffingResult();
-
-        /*clearTariffingResult();*/
-
         var data = {
             code: value.replace('+', ''),
             _token: $("#tariffing input[name='_token']").val()
@@ -215,25 +211,13 @@ $(function() {
         currentPhoneQuery = data.code;
 
         var url = $( "input[name$='url']" ).val();
-        //console.log(data);
         $.ajax({
             url: url + '?rand=' + Math.random(),
             method: "POST",
             data: data,
             dataType : "json",
             success: function(data){
-                //console.info('Server response: ', data);
-/*
-                console.info('================');
-                console.info('value', $('#insert_field').val());
-                console.info('currentPhoneQuery', currentPhoneQuery);
-                console.info('code', data.rate.code);
-*/
-
                 if($('#insert_field').val() != '+' + currentPhoneQuery){
-/*
-                    console.info('IGNORED!!!');
-*/
                     return false;
                 }
 
@@ -245,15 +229,12 @@ $(function() {
                 }
 
                 if(data.status == 'success'){
-                    //swal(trans['base.success'], "", "success");
                     if(data.rate && data.rate.rate ){
-                        //console.info(data.rate);
                         $('#error').hide();
                         $('#tariff-not-found').hide();
                         $('#tariffing-operator').text(data.rate.destination);
                         $('#tariffing-rate').text(data.rate.rate + ' \u20ac/min');
                         $('#tariffing-result').show();
-
                         tariffsCache[value] = data.rate;
                     }else{
                         clearTariffingResult();
@@ -265,11 +246,10 @@ $(function() {
             },
             error:function(data){
                 clearTariffingResult();
-                //console.info(findCode);
             }
         });
         event.preventDefault();
     })
-    /**********END send code country**************/
+/**********END send code country**************/
 
 });
