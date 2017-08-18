@@ -27,6 +27,7 @@ $(function() {
     var myLang = window.location.pathname.split('/');
     var activeLang = $('.langs li a img[alt=' + myLang[1] + ']').attr('src');
     $(".active-lang > img").attr('src',activeLang);
+    $('.langs').find('img[src=' + '\"' + activeLang + '\"' + ']').parent().parent().remove();
     $('.active-lang').on("click", function () {
         if($('.langs').hasClass('active')) {
             $('.langs').slideUp().removeClass('active');
