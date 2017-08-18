@@ -13,7 +13,7 @@
                         <ul class="langs">
 
                             @foreach($langs as $lang)
-                                <li> <a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}"><img src="{{ $lang->img }}" alt="{{ $lang->lang }}"></a></li>
+                                <li> <a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}"><img src="/{{ $lang->img }}" alt="{{ $lang->lang }}"></a></li>
                             @endforeach
 
                         </ul>
@@ -150,7 +150,7 @@
                         <div class="decision-name_wrap">
                             <h4 class="decision-name">{{ $solution->getTranslate('title') }}</h4>
                         </div>
-                        <a href="/{{ App::getLocale() }}/{{ $categories_data['solutions']->link }}/{{ $solution->id }}" target="_blank" class="decision-more">{{ $texts->get('more') }}</a>
+                        <a href="/{{ App::getLocale() }}/{{ $categories_data['solutions']->link }}/{{ $solution->id }}" class="decision-more">{{ $texts->get('more') }}</a>
                     </div>
                 </div>
 

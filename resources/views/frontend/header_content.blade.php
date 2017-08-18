@@ -6,10 +6,10 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="lang text-right">
-                        <a class="active-lang" href="#"><img src="{{ asset('/img/frontend/en.png') }}"></a>
+                        <a class="active-lang" href="#"><img src="/{{ asset('/img/frontend/en.png') }}"></a>
                         <ul class="langs">
                             @foreach($langs as $lang)
-                                <li> <a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}"><img src="{{ $lang->img }}" alt="{{ $lang->lang }}"></a></li>
+                                <li> <a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}"><img src="/{{ $lang->img }}" alt="{{ $lang->lang }}"></a></li>
                             @endforeach
                         </ul>
                     </div>
