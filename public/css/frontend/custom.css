@@ -763,9 +763,6 @@ footer .menu-horizontal > li:not(:hover) > .modal-instance > .modal-trigger{
     }
 }
 @media only screen and (max-width: 400px) {
-    .bar .menu-horizontal{
-        top: 0px;
-    }
     .r-section {
         padding-top: 20em;
     }
