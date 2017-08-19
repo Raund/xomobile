@@ -6,6 +6,14 @@ $(function() {
     }
 /******END change bg for mobile******/
 
+/******zoom for slider******/
+    var sliderWidth = $('.owl-carousel').width();
+    sliderWidth = sliderWidth/3.257 - 40;
+    $('.slide-img-bg').each( function(){
+       $(this).height(sliderWidth); 
+    });
+/******END zoom for slider******/
+
 /******owl-corousel options******/
     $(".owl-carousel").owlCarousel({
         singleItem: true,
