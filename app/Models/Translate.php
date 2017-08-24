@@ -24,18 +24,21 @@ class Translate extends Model {
     public function getAttributeTranslate($key, $current_lang = null){
         $langs = Lang::all();
         $articleArray =  $this->toArray();
-        $attributes = json_decode($articleArray['attributes'], true);
-        //dd($attributes);
-        $pieces = explode("@|;", $attributes[$key]);
-        //dd(count($langs)-1);
-        if(count($pieces) == 1)
-            //dd($attributes[$key]);
-            return $attributes[$key];
-        if(!$current_lang){
-            $current_lang = App::getLocale();
+        if(isset($attributes[$key]) AND $attributes[$key]) {
+            $attributes = json_decode($articleArray['attributes'], true);
+            //dd($attributes);
+            $pieces = explode("@|;", $attributes[$key]);
+            //dd(count($langs)-1);
+            if(count($pieces) == 1)
+                //dd($attributes[$key]);
+                return $attributes[$key];
+            if(!$current_lang){
+                $current_lang = App::getLocale();
+            }
+            $field = $this->getLangsParts($langs, $pieces, $current_lang);
+            return $field;
         }
-        $field = $this->getLangsParts($langs, $pieces, $current_lang);
-        return $field;
+        return false;
     }
     public function getLangsParts($data, $parts, $var_lang, $part = null){
         foreach($data as $key => $item){
