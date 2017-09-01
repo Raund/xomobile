@@ -26,8 +26,10 @@ class BackendInit {
 		$admin_categories = Category::where('parent_id',0)
 			->orderBy('priority','desc')
 			->get();
+
 		//Подключение в Backend url типа
 		$url = url('adminWoit');
+
 		//Подключение в Backend version
 		view()->share('version', config('app.version'));
 		view()->share('url', $url);

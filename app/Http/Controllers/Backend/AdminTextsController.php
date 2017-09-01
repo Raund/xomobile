@@ -39,7 +39,7 @@ class AdminTextsController extends Controller {
 
 	public function create()
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		return view('backend.texts.create', [
 			'langs'=>$langs,
 			'action_method' => 'post'
@@ -50,7 +50,7 @@ class AdminTextsController extends Controller {
 
 	public function store(Request $request)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		//validation rules
 		foreach($langs as $lang){
@@ -89,7 +89,7 @@ class AdminTextsController extends Controller {
 
 	public function edit($id)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$admin_text = Text::where("id","=","$id")->first();
 		return view('backend.texts.edit',[
 			'admin_text'=>$admin_text,
@@ -102,7 +102,7 @@ class AdminTextsController extends Controller {
 
 	public function update(Request $request, $id)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		$admin_text = Text::where('id', '=', $id)->first();
 
@@ -164,7 +164,7 @@ class AdminTextsController extends Controller {
 	/* Сreate array for multilanguage (example- (ua|ru|en)) */
 
 	private function prepareTextData($all){
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		if(isset($all['description']))
 			return $all;

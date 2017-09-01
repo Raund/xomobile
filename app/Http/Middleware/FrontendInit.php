@@ -30,14 +30,17 @@ class FrontendInit {
 		if (!$currentLang){
 			abort('404');
 		}
-		$langs = Lang::activelangs()->orderBy('priority','desc')->get()/**/;
+		$langs = Lang::activelangs()->orderBy('priority','desc')->get();
+
 		// Locale setting
 		App::setLocale($request->lang);
 		$texts = new Text();
+
 		//get all Category
 		$categories = Category::all();
 		$categories_data = [];
 		foreach($categories as $category){
+
 			//create arr for categories with type
 			$categories_data[$category->link] = $category;
 			/*if($category->link){
@@ -48,18 +51,19 @@ class FrontendInit {
 					->first();
 				dd($static_page);
 				view()->share('static_page', $static_page);
-//			}else{
-//				$article = $category
-//					->articles()
-//					->where('id', $request->id)
-//					->activearticles() // use scopeActiveArticles in Article Model
-//					->first();
-//				view()->share('article', $article);
+			}else{
+				$article = $category
+					->articles()
+					->where('id', $request->id)
+					->activearticles() // use scopeActiveArticles in Article Model
+					->first();
+				view()->share('article', $article);
 			}*/
 			$category_item = $category
 				->articles()
 				->activearticles()
 				->get();
+
 			// validate count for change method (get() or first()) if one item in array
 			if(count($category_item) == 1){
 				$category_item = $category_item->first();
@@ -69,7 +73,6 @@ class FrontendInit {
 		}
 
 		//view()->share('static_page', $static_page);
-
 
 		// Share to views global template variables
 		view()->share('langs', $langs);

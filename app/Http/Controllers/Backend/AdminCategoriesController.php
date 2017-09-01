@@ -56,7 +56,6 @@ class AdminCategoriesController extends Controller {
 				}catch(\Exeption $e){
 					echo '<span style="color:red">'. $file . ' > error ' . $e->getMessage() . ' </span><br />';
 				}
-
 			}
 		}
 		exit;
@@ -67,8 +66,7 @@ class AdminCategoriesController extends Controller {
 
 	public function create()
 	{
-		$langs = Lang::activelangs()->get();
-
+		$langs = Lang::all();
 		return view('backend.categories.edit',[
 			'langs'=>$langs,
 			'action_method' => 'post'
@@ -79,12 +77,12 @@ class AdminCategoriesController extends Controller {
 
 	public function store(Request $request)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		//validation rules
 		foreach($langs as $lang){
 			$this->validate($request, [
-				'title_'.$lang['lang'] => 'required|max:255',
+				'title_'.$lang['lang'] => 'max:255',
 				'link' => "required|unique:categories",
 				'img' => 'mimes:jpeg,jpg,png,bmp,gif|max:5000'
 			]);
@@ -97,14 +95,6 @@ class AdminCategoriesController extends Controller {
 
 		//add img
 		$category_img = $request->file('img');
-		//dd($category_img);
-
-
-		/*else{
-			$all['img'] = null;
-			Storage::deleteDirectory('upload/categories/' . $type);
-
-		}*/
 
 		// Сreate array for multilanguage (example- (ua|ru|en))
 		$all = $this->prepareArticleData($all);
@@ -122,7 +112,6 @@ class AdminCategoriesController extends Controller {
 
 		//update $all after save img
 		$category->update($all);
-
 
 		//JSON respons when entry in DB successfully
 		return response()->json([
@@ -147,7 +136,7 @@ class AdminCategoriesController extends Controller {
 
 	public function edit($type = null)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$admin_category = Category::where("link","=","$type")->first();
 
 		//Var article_parent
@@ -164,30 +153,13 @@ class AdminCategoriesController extends Controller {
 		return view('backend.categories.edit')
 			->with(compact('langs','admin_category','type','attributes_fields','category_parent'))
 			->with(['action_method' => 'put']);
-
-		/*return view('backend.categories.edit', [
-			'admin_category' => $admin_category,
-			'langs' => $langs,
-			'type' => $type,
-			'action_method' => 'put',
-			'attributes_fields' => $attributes_fields,
-			'article_parent' => $article_parent
-		]);*/
-        /*[
-			'admin_category' => $admin_category,
-			'langs' => $langs,
-			'type' => $type,
-			'action_method' => 'put',
-			'attributes_fields' => $attributes_fields,
-			'article_parent' => $article_parent
-		]);*/
 	}
 
 	/* Update the Category in storage.(@param  int  $id,@return Response*/
 
 	public function update(Request $request, $type)
 	{
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 
 		$category = Category::where('link',$type)->first();
 
@@ -197,7 +169,7 @@ class AdminCategoriesController extends Controller {
 		//validation rules
 		foreach($langs as $lang){
 			$this->validate($request, [
-				'title_'.$lang['lang'] => 'required|max:255',
+				'title_'.$lang['lang'] => 'max:255',
 				'link' => "required",
 				'img' => 'mimes:jpeg,jpg,png,bmp,gif|max:5000'
 			]);
@@ -207,7 +179,6 @@ class AdminCategoriesController extends Controller {
 		$all['link'] = str_slug($all['link'], '-');
 
 		$category_img = $request->file('img');
-		//dd($category_img);
 
 		//add category img and save in file
 		if($category_img){
@@ -309,7 +280,7 @@ class AdminCategoriesController extends Controller {
 	}
 	/* Сreate array for multilanguage (example- (ua|ru|en)) */
 	private function prepareArticleData($all){
-		$langs = Lang::activelangs()->get();
+		$langs = Lang::all();
 		$all['title'] = '';
 		$all['short_description'] = '';
 		$all['description'] = '';
