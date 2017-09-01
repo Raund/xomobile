@@ -261,10 +261,10 @@
                                     <div class="col-md-12">
                                         <div class="r-feature-img" style="background-image: url('{{ asset( $benefit->getAttributeTranslate('Картинка')) }}')"></div>
                                     </div>
-                                    <div class="col-md-12"><div>
+                                    <div class="col-md-12">
 
                                 @else
-                                    <div class="col-md-12"><div>
+                                    <div class="col-md-12">
                                 @endif
 
                                     <div class="feature__body">
@@ -276,12 +276,12 @@
                                         <div class="free-block">{{ $benefit->getAttributeTranslate('Текст во флажке') ? $benefit->getAttributeTranslate('Текст во флажке') : 'Free' }}</div>
                                     @endif
 
+                                </div>
                             </div>
-                        </div>
 
                     @endforeach
 
-                </div>
+                        </div>
             </div>
 
         @endif
