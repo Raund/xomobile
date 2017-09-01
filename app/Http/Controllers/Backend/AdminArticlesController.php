@@ -29,7 +29,8 @@ class AdminArticlesController extends Controller {
 		$admin_category_children = $admin_category->category_children()->get();
 		/*dd($admin_category_parent);*/
 		$admin_articles = $admin_category->articles;
-		return view('backend.articles.list')->with(compact('admin_category','admin_articles','type','admin_category_children','admin_category_parent'));
+		return view('backend.articles.list')
+			->with(compact('admin_category','admin_articles','type','admin_category_children','admin_category_parent'));
 
 	}
 
@@ -276,30 +277,29 @@ class AdminArticlesController extends Controller {
 		}
 		if (isset($all['attributes'])) {
 			$attributes = $all['attributes'];
-			//dd($attributes);
 
 				foreach ($attributes  as $key => $attribute ) {
-					//dd($key);
+
 					if (is_object($attribute) && $attribute){
 						//dd($attribute);
-						/*Rewrite img*/
+						/*Rewrite img when count lang = conts*/
 						$key_without_langs = stristr($key, '_', true);
 						//dd($key_without_langs);
-						if($key_without_langs){
+						/*if($key_without_langs){
 							$key_data = $article_attributes[$key_without_langs];
 							//dd($key_data);
 							$lang_data = substr($key, -2);
 							$img_data = explode("@|;", $key_data);
-							//dd($langs);
-							foreach($langs as $i => $lang){
+							//dd($img_data);
+							/*foreach($langs as $i => $lang){
 
-								if($lang->lang == $lang_data AND $img_data[$i]){
-									//dd($img_data[$i]);
+								if($img_data[$i] && isset($img_data[$i]) && $lang->lang == $lang_data){
+									dd($img_data[$i]);
 									Storage::delete($img_data[$i]);
 								}
 							}
 						}
-						/*else{
+						else{
 							Storage::deleteDirectory('upload/articles/' . $article->id . '/img');
 						}*/
 
@@ -319,7 +319,7 @@ class AdminArticlesController extends Controller {
 			unset($all['saved-files-path']);
 
 			$all['attributes'] = $attributes;
-			//dd($attributes);
+
 
 		}
 
