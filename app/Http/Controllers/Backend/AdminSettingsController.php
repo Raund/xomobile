@@ -3,9 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend;
-//use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
-//use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\URL;
 use App\Models\Article;
 use App\Models\Category;
@@ -28,8 +26,10 @@ class AdminSettingsController extends Controller {
 	public function index()
 	{
 		$settings = Setting::all();
+
 		// List of Softdeletes items
 		$settings_deleted = Setting::onlyTrashed()->get();
+
 		return view('backend.settings.list',[
 			'settings' => $settings,
 			'settings_deleted' => $settings_deleted

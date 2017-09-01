@@ -10,7 +10,7 @@ use App\Models\Category;
 use App\Models\Text;
 use App\Models\Lang;
 use League\Flysystem\Config;
-//use DB;
+
 
 class FrontendInit {
 
@@ -34,31 +34,15 @@ class FrontendInit {
 
 		// Locale setting
 		App::setLocale($request->lang);
+
 		$texts = new Text();
 
 		//get all Category
 		$categories = Category::all();
 		$categories_data = [];
 		foreach($categories as $category){
-
 			//create arr for categories with type
 			$categories_data[$category->link] = $category;
-			/*if($category->link){
-				$static_page = $category
-					->articles()
-					->where('id', $request->id)
-					->activearticles() // use scopeActiveArticles in Article Model
-					->first();
-				dd($static_page);
-				view()->share('static_page', $static_page);
-			}else{
-				$article = $category
-					->articles()
-					->where('id', $request->id)
-					->activearticles() // use scopeActiveArticles in Article Model
-					->first();
-				view()->share('article', $article);
-			}*/
 			$category_item = $category
 				->articles()
 				->activearticles()

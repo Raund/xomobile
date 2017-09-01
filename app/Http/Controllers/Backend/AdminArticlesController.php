@@ -27,7 +27,6 @@ class AdminArticlesController extends Controller {
 		$admin_category = Category::where("link","=",$type)->first();
 		$admin_category_parent = $admin_category->category_parent()->first();
 		$admin_category_children = $admin_category->category_children()->get();
-		/*dd($admin_category_parent);*/
 		$admin_articles = $admin_category->articles;
 		return view('backend.articles.list')
 			->with(compact('admin_category','admin_articles','type','admin_category_children','admin_category_parent'));
@@ -38,7 +37,6 @@ class AdminArticlesController extends Controller {
 
 	public function fileoptimize(Request $request, $id)
 	{
-		App::setLocale('ua');
 		if (isset($id)){
 			$articles = [Article::find($id)];
 		}
@@ -103,6 +101,7 @@ class AdminArticlesController extends Controller {
 				'img' => 'mimes:jpeg,jpg,png,bmp,gif|max:5000'
 			]);
 		}
+
 		$all = $request->except(['attributes','saved-files-path']);
 
 		// Get current category ID
@@ -114,6 +113,7 @@ class AdminArticlesController extends Controller {
 
 		//Create new entry in DB
 		$article = Article::create($all);
+
 		$all = $request->all();
 
 		//add category img and save in file
@@ -123,7 +123,7 @@ class AdminArticlesController extends Controller {
 			Storage::put('upload/articles/' .$article->id   .'/main/' . $name_img, file_get_contents($article_img));
 			$all['img'] = 'upload/articles/' .$article->id .'/main/' . $name_img;
 		}
-		//dd($all['attributes']);
+
 		if (isset($all['attributes'])) {
 			$attributes = $all['attributes'];
 
@@ -131,19 +131,15 @@ class AdminArticlesController extends Controller {
 				if (is_object($attribute) && $attribute){
 					$extension = $attribute->getClientOriginalExtension();
 					$name_img = $article->id . '-' . uniqid()  . '.' . $extension;
-					//dd($extension);
 					Storage::put('upload/articles/' . $article->id . '/img/' . $name_img, file_get_contents($attribute));
 					//$all['img'] = 'upload/articles/' . $article->id . '/main/' . $name_img;
 					$attributes[$key] = 'upload/articles/' . $article->id . '/img/' . $name_img;
-					//dd($attributes);
-					//$all['attributes'] = $attributes;
-
 				}
 				elseif(!$attributes[$key] AND isset($all['saved-files-path']) AND $all['saved-files-path'] AND isset($all['saved-files-path'][$key]) AND $all['saved-files-path'][$key]){
 					$attributes[$key] = $all['saved-files-path'][$key];
 				}
 			}
-			//dd($attributes);
+
 			unset($all['saved-files-path']);
 
 			$all['attributes'] = $attributes;
@@ -154,7 +150,6 @@ class AdminArticlesController extends Controller {
 
 		// Сreate array for multilanguage (example- (ua|ru|en))
 		$all = $this->prepareArticleData($all);
-		//Encode attributes from request
 
 		//update $all after save imgs
 		$article->update($all);
@@ -163,7 +158,7 @@ class AdminArticlesController extends Controller {
 		return response()->json([
 			"status" => 'success',
 			"message" => 'Успешно сохранено',
-			"redirect" => URL::to('/adminWoit/articles/'.$type)
+			"redirect" => URL::to('/adminWoit/articles/' . $type)
 		]);
 	}
 
@@ -182,8 +177,6 @@ class AdminArticlesController extends Controller {
 
 		//Decode attributes from articles DB
 		$attributes = json_decode($admin_article->attributes, true);
-
-		//$attributes = json_decode($admin_article->attributes);
 
 		$admin_category = Category::where("link", $type)->first();
 
@@ -222,9 +215,10 @@ class AdminArticlesController extends Controller {
 				'img' => 'mimes:jpeg,jpg,png,bmp,gif|max:5000'
 			]);
 		}
+
 		$article = Article::where('id', $id)->first();
 		$article_attributes = json_decode($article->attributes, true);
-		//dd($article_attributes);
+
 		//create var all for date from request
 		$all = $request->all();
 
@@ -281,10 +275,8 @@ class AdminArticlesController extends Controller {
 				foreach ($attributes  as $key => $attribute ) {
 
 					if (is_object($attribute) && $attribute){
-						//dd($attribute);
 						/*Rewrite img when count lang = conts*/
 						$key_without_langs = stristr($key, '_', true);
-						//dd($key_without_langs);
 						/*if($key_without_langs){
 							$key_data = $article_attributes[$key_without_langs];
 							//dd($key_data);
@@ -319,8 +311,6 @@ class AdminArticlesController extends Controller {
 			unset($all['saved-files-path']);
 
 			$all['attributes'] = $attributes;
-
-
 		}
 
 		//Encode attributes from request
@@ -344,7 +334,7 @@ class AdminArticlesController extends Controller {
 		return response()->json([
 			"status" => 'success',
 			"message" => 'Успешно сохранено',
-			"redirect" => URL::to('/adminWoit/articles/'.$type)
+			"redirect" => URL::to('/adminWoit/articles/' . $type)
 		]);
 	}
 
@@ -363,10 +353,11 @@ class AdminArticlesController extends Controller {
 		else{
 			return response()->json([
 				"status" => 'error',
-				"message" => 'Виникла помилка при видаленні'
+				"message" => 'Возникла ошибка при удалении'
 			]);
 		}
 	}
+
 	/* Сreate array for multilanguage (example- (ua|ru|en)) */
 	private function prepareArticleData($all){
 		$langs = Lang::all();
@@ -376,7 +367,6 @@ class AdminArticlesController extends Controller {
 		$all['meta_title'] = '';
 		$all['meta_description'] = '';
 		$all['meta_keywords'] ='';
-
 
 		//Change format DATE
 		if (isset($all['date']))

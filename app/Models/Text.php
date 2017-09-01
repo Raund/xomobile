@@ -20,7 +20,7 @@ class Text extends Translate {
     ];
     protected $dates = ['deleted_at'];
 
-    /* */
+    /* Init Text fiels*/
     public function init(){
         $textsArray = $this->all();
         foreach($textsArray as $text){
@@ -30,6 +30,7 @@ class Text extends Translate {
         return $this;
     }
 
+    /* Get Text fiels*/
     public function get($value){
         return isset($this->fields[$value]) ? $this->fields[$value] : $value;
     }

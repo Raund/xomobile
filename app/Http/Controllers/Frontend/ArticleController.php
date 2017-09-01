@@ -2,12 +2,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Requests;
-//use App\Http\Requests\ContactRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Frontend;
-//use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
-//use Illuminate\Routing\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Lang;
@@ -15,7 +12,6 @@ use App\Models\Order;
 use App\Models\Text;
 use App;
 use Illuminate\Support\Facades\Response;
-//use Illuminate\Contracts\View\View;
 use Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,9 +19,6 @@ class ArticleController extends Controller {
 
 	private $content;
 	private $code;
-
-
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -33,12 +26,7 @@ class ArticleController extends Controller {
 	 */
 	public function index($lang, $type = 'main')
 	{
-
-		//dd($images_download);
-		//dump($news);
-		//dd($video->category()->first()->active);
-		return view('frontend.'. $type);
-
+		return view('frontend.' . $type);
 	}
 
 	/**
@@ -58,15 +46,6 @@ class ArticleController extends Controller {
 				'static_page' => $article
 			]);
 		}
-		/*$static_page = Category::where('link', $type)
-		->first()
-		->articles()
-		->where('id', $id)
-		->activearticles() // use scopeActiveArticles in Article Model
-		->first();
-		view()->share('static_page', $static_page);*/
-		//return view('frontend.' . $type);
-
 	}
 
 	/**
@@ -124,7 +103,6 @@ class ArticleController extends Controller {
 	}
 	public function contact(Request $request, $lang)
 	{
-		//dd('contact');
 		if ($request ->isMethod('post')){
 			/*get [] from request*/
 			$all = $request->all();
@@ -178,7 +156,6 @@ class ArticleController extends Controller {
 			}
 
 		}
-
 	}
 
 	public function update_rate_debug(Request $request){
@@ -204,9 +181,6 @@ class ArticleController extends Controller {
 			}else{
 				echo '<br><br>=========== RESULT ERROR =============<br>';
 			}
-
-
-
 	}
 	/**
 	 * getRate from JSONE
@@ -217,9 +191,6 @@ class ArticleController extends Controller {
 	public function rate(Request $request)
 	{
 		if ($request ->isMethod('post')){
-
-			//get val from DB
-			//$api_link = getSetting('tariffing');
 
 			//get content from link
 			$json = @file_get_contents(base_path('/rate/content.json'));

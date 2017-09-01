@@ -3,10 +3,7 @@ use Redirect;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Backend;
-//use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
-//use Illuminate\Routing\Controller;
-//use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use App\Models\Article;
 use App\Models\Category;
@@ -35,7 +32,6 @@ class AdminCategoriesController extends Controller {
 
 	public function fileoptimize(Request $request, $type)
 	{
-		App::setLocale('ua');
 		if (isset($type)){
 			$categories = [Category::where('link',$type)];
 		}
@@ -273,7 +269,7 @@ class AdminCategoriesController extends Controller {
 		else{
 			return response()->json([
 				"status" => 'error',
-				"message" => 'Виникла помилка при видаленні'
+				"message" => 'Возникла ошибка при удалении'
 			]);
 		}
 

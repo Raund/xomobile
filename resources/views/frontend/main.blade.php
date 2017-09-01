@@ -139,25 +139,25 @@
     @if(isset($solutions) AND count($solutions) !== 0  AND $categories_data['solutions']->active == 1)
 
         <section id="decision" class="text-center bg--secondary find-section">
-        <div class="container">
-            <div class="row">
-                <h4 class="section-name text-center">{{ $categories_data['solutions']->getTranslate('title') }}</h4>
-               
-               @foreach($solutions as $solution)
-                    <div class="col-sm-6 col-md-4">
-                    <div class="decision-block">
-                        <div class="decision-img" style="background-image: url('{{ asset( $solution->getAttributeTranslate('Картинка')) }}')"></div>
-                        <div class="decision-name_wrap">
-                            <h4 class="decision-name">{{ $solution->getTranslate('title') }}</h4>
-                        </div>
-                        <a href="/{{ App::getLocale() }}/{{ $categories_data['solutions']->link }}/{{ $solution->id }}" class="decision-more">{{ $texts->get('more') }}</a>
-                    </div>
-                </div>
+            <div class="container">
+                <div class="row">
+                    <h4 class="section-name text-center">{{ $categories_data['solutions']->getTranslate('title') }}</h4>
 
-                @endforeach
+                   @foreach($solutions as $solution)
+                        <div class="col-sm-6 col-md-4">
+                            <div class="decision-block">
+                                <div class="decision-img" style="background-image: url('{{ asset( $solution->getAttributeTranslate('Картинка')) }}')"></div>
+                                <div class="decision-name_wrap">
+                                    <h4 class="decision-name">{{ $solution->getTranslate('title') }}</h4>
+                                </div>
+                                <a href="/{{ App::getLocale() }}/{{ $categories_data['solutions']->link }}/{{ $solution->id }}" class="decision-more">{{ $texts->get('more') }}</a>
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     @endif
 
@@ -261,29 +261,28 @@
                                     <div class="col-md-12">
                                         <div class="r-feature-img" style="background-image: url('{{ asset( $benefit->getAttributeTranslate('Картинка')) }}')"></div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-12"><div>
 
-                                        @else
-                                            <div class="col-md-12">
+                                @else
+                                    <div class="col-md-12"><div>
+                                @endif
 
-                                            @endif
-
-                                            <div class="feature__body">
-                                                <h4>{{ $benefit->getTranslate('title') }}</h4>
-                                                {!! $benefit->getTranslate('short_description') ? $benefit->getTranslate('short_description') : ''!!}  </div>
-                                            </div>
-
-                                            @if($benefit->getAttributeTranslate('Флажок') == 1)
-                                                <div class="free-block">{{ $benefit->getAttributeTranslate('Текст во флажке') ? $benefit->getAttributeTranslate('Текст во флажке') : 'Free' }}</div>
-                                            @endif
-
+                                    <div class="feature__body">
+                                        <h4>{{ $benefit->getTranslate('title') }}</h4>
+                                        {!! $benefit->getTranslate('short_description') ? $benefit->getTranslate('short_description') : ''!!}  </div>
                                     </div>
+
+                                    @if($benefit->getAttributeTranslate('Флажок') == 1)
+                                        <div class="free-block">{{ $benefit->getAttributeTranslate('Текст во флажке') ? $benefit->getAttributeTranslate('Текст во флажке') : 'Free' }}</div>
+                                    @endif
+
                             </div>
-
-                            @endforeach
-
                         </div>
+
+                    @endforeach
+
                 </div>
+            </div>
 
         @endif
 

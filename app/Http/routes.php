@@ -83,11 +83,6 @@ Route::group(['prefix'=>'adminWoit', 'middleware' => ['auth', 'backend.init']], 
 	Route::get('/langs/{id}',['uses' => 'Backend\AdminLangsController@edit','as' => 'langs_edit']);//Вывод формы редакторирование элемента..
 	Route::put('/langs/{id}',['uses' =>'Backend\AdminLangsController@update','as' => 'langs_update']);//Сохранение элемента после редактирования..
 	Route::delete('/langs/{id}',['uses' => 'Backend\AdminLangsController@destroy','as' => 'langs_delete']);//Удаление элемента
-	/*//Routes for Orders (Backend)
-	Route::get('/orders', ['uses' => 'Backend\AdminOrdersController@index', 'as' => 'orders_index']);//Вывод списка заказов
-	Route::delete('/orders/{id}', ['uses' => 'Backend\AdminOrdersController@destroy', 'as' => 'orders_delete']);//Вывод списка заказов*/
-
-
 
 });
 /*/Backend group routes*/
@@ -96,8 +91,8 @@ Route::group(['prefix'=>'adminWoit', 'middleware' => ['auth', 'backend.init']], 
 Route::group(['middleware' => 'frontend.init'], function(){
 	/*Callback group route*/
 	Route::post('/{lang}', ['uses' => 'Frontend\ArticleController@contact','as' => 'contact']);//Обработчик Обратной связи
-	Route::get('/{lang}/{type?}', ['uses' => 'Frontend\ArticleController@index', 'as' => 'article_index']);
-	Route::get('/{lang}/{type}/{id}', ['uses' => 'Frontend\ArticleController@show', 'as' => 'article_show']);
+	Route::get('/{lang}/{type?}', ['uses' => 'Frontend\ArticleController@index', 'as' => 'article_index']);//Инициализация страниц
+	Route::get('/{lang}/{type}/{id}', ['uses' => 'Frontend\ArticleController@show', 'as' => 'article_show']);//Вывод отдельной страницы
 	Route::post('/{lang}/rate', ['uses' => 'Frontend\ArticleController@rate','as' => 'rate']);//Обработчик тарифа
 
 	Route::get('/{lang}/payment', 'Frontend\PaymentController@index'); // Форма пополнения

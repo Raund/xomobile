@@ -58,14 +58,13 @@ class AdminLangsController extends Controller {
 
 		$all = $request->all();
 
-		//dd($all);
 		//add img
 		$img = $request->file('img');
 		if($img){
 			$extension = $img->getClientOriginalExtension();
 			$name_img = $all['lang']  . '-' . time() . '.' . $extension;
-			Storage::put('upload/langs/' . $all['lang'] .'/' . $name_img, file_get_contents($img));
-			$all['img'] = 'upload/langs/' . $all['lang'] .'/' . $name_img;
+			Storage::put('upload/langs/' . $all['lang'] . '/' . $name_img, file_get_contents($img));
+			$all['img'] = 'upload/langs/' . $all['lang'] . '/' . $name_img;
 		}
 		//Create new entry in DB
 		Lang::create($all);
@@ -127,9 +126,10 @@ class AdminLangsController extends Controller {
 
 		//create var all for date from request
 		$all = $request->all();
+
 		//create var all for date from request
 		$all = $request->all();
-		//dd($all);
+
 		//add img
 		$img = $request->file('img');
 		if($img){
