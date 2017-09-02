@@ -258,7 +258,7 @@ $(function() {
             }
         });
         event.preventDefault();
-    })
+    });
 /**********END send code country**************/
 
 });
