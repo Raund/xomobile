@@ -53,7 +53,7 @@ class AdminTextsController extends Controller {
 		//validation rules
 		foreach($langs as $lang){
 			$this->validate($request, [
-				'title' => 'required|max:255',
+				'title' => 'max:255',
 			]);
 		}
 		$all = $request->all();
