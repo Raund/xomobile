@@ -87,7 +87,7 @@
 {{--
                                     <label class="control-label">Картинка категорії</label>
 --}}
-                                    <div class="controls" id="show-image" >
+                                    <div class="controls show-image" >
                                         <div class="row-fluid">
                                             <div class="span3">
                                                 <div class="profile-activity clearfix" style="border-bottom: none">
@@ -97,18 +97,18 @@
 
                                                     <div class="tools action-buttons">
                                                         <a href="#" class="blue">
-                                                            <i class="icon-pencil bigger-125 " id="image-edit" ></i>
+                                                            <i class="icon-pencil bigger-125 image-edit" ></i>
                                                         </a>
 
                                                         <a href="#" class="red">
-                                                            <i class="icon-remove bigger-125" id="image-close"></i>
+                                                            <i class="icon-remove bigger-125 image-close"></i>
                                                         </a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="controls" id="image-upload" style="display:none">
+                                    <div class="controls image-upload" style="display:none">
                                         <div class="row-fluid">
                                             <div class="span6">
                                                 <div class="widget-box">
